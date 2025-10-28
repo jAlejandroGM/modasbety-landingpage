@@ -1,0 +1,146 @@
+<footer role="contentinfo">
+  <div class="contenedor">
+    <section class="footer-brand">
+      <p>
+        © <span id="current-year">2025</span> Modas Bety - Taller de Alta Costura
+        para Damas
+      </p>
+    </section>
+    <nav class="footer-social" aria-label="Enlaces a redes sociales">
+      <a
+        href="https://www.facebook.com/ModasBetyConfecciones"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Síguenos en Facebook"
+      >
+        <img
+          src="/icons/facebook_sakura.svg"
+          alt="Facebook"
+          width="32"
+          height="32"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/modasbety_"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Síguenos en Instagram"
+      >
+        <img
+          src="/icons/instagram_sakura.svg"
+          alt="Instagram"
+          width="32"
+          height="32"
+        />
+      </a>
+      <a
+        href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contáctanos por WhatsApp"
+      >
+        <img
+          src="/icons/whatsapp_sakura.svg"
+          alt="WhatsApp"
+          width="32"
+          height="32"
+        />
+      </a>
+    </nav>
+    <address class="dev-credits">
+      Desarrollado con ☕ por
+      <a
+        href="https://github.com/jAlejandroGM"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="dev-link"
+        aria-label="Ver perfil de GitHub del desarrollador">José Alejandro G.</a
+      >
+    </address>
+  </div>
+</footer>
+
+<style>
+  footer .contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+  }
+
+  .dev-credits {
+    font-size: 0.8rem;
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  .dev-link {
+    color: var(--sakura-primary);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .dev-link:hover {
+    color: var(--sakura-hover);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .footer-social a {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .footer-social img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer-social a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    footer .contenedor {
+      gap: 0.7rem;
+    }
+    footer p {
+      font-size: 0.8rem;
+    }
+    .footer-social img {
+      width: 28px;
+      height: 28px;
+    }
+    .dev-credits {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    footer .contenedor {
+      gap: 0.5rem;
+    }
+    footer p {
+      font-size: 0.7rem;
+    }
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+    }
+    .dev-credits {
+      font-size: 0.6rem;
+    }
+  }
+</style>

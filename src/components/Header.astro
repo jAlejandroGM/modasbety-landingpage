@@ -1,0 +1,91 @@
+<header role="banner">
+  <nav class="navbar" role="navigation" aria-label="Menú principal">
+    <div class="contenedor">
+      <ul class="nav-links">
+        <li>
+          <a href="#servicios" aria-label="Ir a la sección de servicios"
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a href="#historia" aria-label="Ir a la sección de nuestra historia"
+            >Nuestra Historia</a
+          >
+        </li>
+        <li>
+          <a href="#ubicacion" aria-label="Ir a la sección de ubicación"
+            >Ubicación</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    padding: 1rem 0;
+  }
+
+  .navbar .contenedor {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    display: block;
+    color: #f8f9fa;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a:hover {
+    color: #ffc0cb;
+    background: rgba(255, 192, 203, 0.1);
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffc0cb;
+    transition: width 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-links a:hover::after {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  }
+</style>

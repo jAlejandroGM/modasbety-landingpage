@@ -1,0 +1,205 @@
+<section
+  id="historia"
+  class="historia"
+  role="region"
+  aria-labelledby="historia-titulo"
+>
+  <div class="contenedor">
+    <div class="historia-content">
+      <div class="historia-text">
+        <h2 id="historia-titulo">Nuestra Historia</h2>
+        <div class="historia-timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2010</div>
+            <div class="timeline-content">
+              <h3>Los Inicios</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-content">
+              <h3>Crecimiento y Especialización</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content">
+              <h3>Expansión Digital</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h3>Presente - Alta Costura con Identidad</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
+                perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="historia-visual">
+        <div class="historia-highlight">
+          <h3>15+ años</h3>
+          <p>de experiencia en alta costura</p>
+        </div>
+        <div class="historia-highlight">
+          <h3>500+</h3>
+          <p>clientas satisfechas</p>
+        </div>
+        <div class="historia-highlight">
+          <h3>100%</h3>
+          <p>confección a medida</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .historia-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .historia h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #f8f9fa;
+    font-family: "Playfair Display", serif;
+  }
+
+  .historia-timeline {
+    position: relative;
+  }
+
+  .historia-timeline::before {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--sakura-primary);
+  }
+
+  .timeline-item {
+    display: flex;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-year {
+    width: 4rem;
+    height: 4rem;
+    background: var(--sakura-primary);
+    color: var(--dark-text);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-right: 2rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #f8f9fa;
+  }
+
+  .timeline-content p {
+    color: #bdc3c7;
+    line-height: 1.6;
+  }
+
+  .historia-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .historia-highlight {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border-left: 4px solid #ffc0cb;
+    border-top: 1px solid var(--sakura-primary);
+    border-right: 1px solid var(--sakura-primary);
+    border-bottom: 1px solid var(--sakura-primary);
+  }
+
+  .historia-highlight h3 {
+    font-size: 2rem;
+    color: var(--sakura-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .historia-highlight p {
+    color: #bdc3c7;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .historia h2 {
+      font-size: 2rem;
+    }
+
+    .historia-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .historia-timeline::before {
+      left: 1.5rem;
+    }
+
+    .timeline-year {
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .historia-visual {
+      order: -1;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 1rem;
+    }
+
+    .historia-highlight {
+      min-width: 150px;
+      flex-shrink: 0;
+    }
+  }
+</style>
