@@ -27,16 +27,16 @@
   }
 }
 
-.servicio-card,
-.historia-highlight,
-.ubicacion-info {
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.8) 0%,
-    rgba(42, 42, 42, 0.6) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+@layer components {
+  .surface-panel {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 26, 0.8) 0%,
+      rgba(42, 42, 42, 0.6) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 #sakura-canvas {
@@ -47,12 +47,6 @@
   height: 100%;
   pointer-events: none;
   z-index: -1;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 12rem;
 }
 
 .contenedor {
