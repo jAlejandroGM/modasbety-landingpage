@@ -1,46 +1,119 @@
-# Astro Starter Kit: Basics
+# 👗 Modas Bety — Official Website
 
-```sh
-npm create astro@latest -- --template basics
+_A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
+
+![Astro](https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Status](https://img.shields.io/badge/Status-In%20Development-blue?style=flat-square)
+![License](https://img.shields.io/badge/License-Private-red?style=flat-square)
+
+<!-- ==================== DEMO SECTION ==================== -->
+
+## 🔗 Demo
+
+**Live Site:** [Coming soon — Vercel deployment pending]
+
+<!-- ==================== FEATURES SECTION ==================== -->
+
+## Features
+
+- **Responsive Design** — Mobile-first approach, fully optimized for all screen sizes
+- **Custom Animations** — Sakura petals falling animation using Canvas API
+- **SEO Optimized** — Structured data (JSON-LD), Open Graph tags, semantic HTML5
+- **Performance** — Static site generation with Astro for fast load times
+- **Accessibility** — WCAG 2.1 compliant with ARIA labels and keyboard navigation
+- **Interactive Elements** — WhatsApp integration, copy-to-clipboard functionality, Google Maps embed
+- **Social Media Integration** — Direct links to Facebook and Instagram profiles
+
+<!-- ==================== TECH STACK SECTION ==================== -->
+
+## Tech Stack
+
+- **Astro 5** — Static site generator
+- **Tailwind CSS 4** — Utility-first CSS framework (migration in progress)
+- **TypeScript** — Type-safe JavaScript
+- **HTML5 / CSS3** — Semantic markup and modern styling
+- **Vercel** — Deployment platform
+
+<!-- ==================== PROJECT STRUCTURE SECTION ==================== -->
+
+## Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+modasbety/
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+│   ├── icons/              # UI and social media icons
+│   ├── images/             # Static images and graphics
+│   └── scripts/            # Client-side JavaScript
+│       └── components/     # Component-specific scripts
+├── src/
+│   ├── components/         # Reusable Astro components
+│   ├── layouts/            # Base layout with SEO configuration
+│   ├── pages/              # Application pages
+│   └── styles/             # Global CSS and variables
+├── astro.config.mjs        # Astro configuration
+├── tsconfig.json           # TypeScript configuration
+└── package.json            # Dependencies and scripts
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+<!-- ==================== GETTING STARTED SECTION ==================== -->
 
-## 🧞 Commands
+## Getting Started
 
-All commands are run from the root of the project, from a terminal:
+### Prerequisites
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Node.js 18.x or higher
+- npm or yarn
 
-## 👀 Want to learn more?
+### Installation
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/jAlejandroGM/modasbety-landingpage.git
+cd modasbety-landingpage
+npm install
+```
+
+### Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The site will be available at `http://localhost:4321`
+
+### Build
+
+Generate a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+<!-- ==================== LICENSE SECTION ==================== -->
+
+## License
+
+This project is private and was developed exclusively for Modas Bety.  
+Redistribution, modification, or commercial use is not permitted without prior authorization from the author.
+
+<!-- ==================== AUTHOR SECTION ==================== -->
+
+## Author
+
+Developed with ☕ by **José Alejandro Guzmán Mendoza**  
+📫 [GitHub](https://github.com/jAlejandroGM)
+
+---
+
+_This is a real-world client project developed as part of a professional web development portfolio._
