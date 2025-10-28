@@ -110,7 +110,11 @@ const structuredData = {
       set:html={JSON.stringify(structuredData)}
     />
   </head>
-  <body>
+  <body
+    class="flex flex-col min-h-screen gap-24 bg-body text-gray-50 transition-all duration-300"
+  >
+    <canvas id="sakura-canvas"></canvas>
+
     <slot />
   </body>
 </html>
