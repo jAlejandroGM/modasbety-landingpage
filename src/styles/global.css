@@ -1,7 +1,14 @@
 @import "tailwindcss";
 
-@layer utilities {
-  .bg-body {
+@theme {
+  --color-sakura-primary: #ffc0cb;
+  --color-sakura-hover: #ffb3ba;
+  --color-whatsapp: #22c55e;
+  --font-text: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
     background: radial-gradient(
         circle at 20% 50%,
         rgba(212, 175, 55, 0.05) 0%,
@@ -14,9 +21,6 @@
       ),
       linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
   }
-}
-
-@layer base {
   ul {
     list-style: none;
   }
