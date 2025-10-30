@@ -4,6 +4,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 ![Astro](https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-In%20Development-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Private-red?style=flat-square)
@@ -12,7 +13,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 ## 🔗 Demo
 
-**Live Site:** [Coming soon — Vercel deployment pending]
+**Live Site:** [Modas Bety 🌸](https://modas-bety-landingpage.vercel.app/)
 
 <!-- ==================== FEATURES SECTION ==================== -->
 
@@ -32,6 +33,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 - **Astro 5** — Static site generator
 - **Tailwind CSS 4** — Utility-first CSS framework (migration in progress)
+- **JavaScript** — Client-side scripts for animations and interactions
 - **TypeScript** — Type-safe JavaScript
 - **HTML5 / CSS3** — Semantic markup and modern styling
 - **Vercel** — Deployment platform
@@ -45,10 +47,13 @@ modasbety/
 ├── public/
 │   ├── icons/              # UI and social media icons
 │   ├── images/             # Static images and graphics
-│   └── scripts/            # Client-side JavaScript
-│       └── components/     # Component-specific scripts
+│   └── scripts/            # Client-side scripts
 ├── src/
 │   ├── components/         # Reusable Astro components
+│   │   ├── layout/         # Layout components (Header, Footer, etc.)
+│   │   ├── sections/       # Page sections (Hero, Services, etc.)
+│   │   └── ui/             # UI components
+│   ├── icons/              # SVG icons
 │   ├── layouts/            # Base layout with SEO configuration
 │   ├── pages/              # Application pages
 │   └── styles/             # Global CSS and variables
