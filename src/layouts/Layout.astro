@@ -113,8 +113,13 @@ const structuredData = {
   <body
     class="flex flex-col min-h-screen gap-24 text-gray-50 transition-all duration-300"
   >
-    <canvas id="sakura-canvas"></canvas>
+    <canvas
+      class="absolute inset-0 pointer-events-none w-full h-100dvh z-0"
+      id="sakura-canvas"></canvas>
+    <div style="position: relative; z-index: 1">
+      <slot />
+    </div>
 
-    <slot />
+    <script src="/scripts/sakura-animation.js" defer></script>
   </body>
 </html>
