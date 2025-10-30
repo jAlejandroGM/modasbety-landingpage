@@ -161,32 +161,49 @@ if (!canvas) {
       }
 
       // Coloca el pétalo por arriba del área visible total y configura sus parámetros aleatorios
+      // Las velocidades ahora están en unidades por segundo (px/s o rad/s). Esto hace
+      // que el movimiento sea independiente del framerate y se vea consistente
+      // en móviles con fps más bajos.
       reset(width, height) {
         this.x = random(-100, width + 100);
         this.y = random(-height * 0.5, -100);
+        this.baseX = this.x; // posición base para el sway (evita drift acumulado)
         this.size = random(25, 45);
-        this.speedY = random(0.2, 0.6);
-        this.speedX = random(-0.1, 0.1);
+        // Velocidades en px/segundo (aumentadas 50% respecto a valores originales)
+        this.speedY = random(30, 120); // 30..120 px/s (antes 20..80)
+        this.speedX = random(-15, 15); // movimiento lateral en px/s (antes -10..10)
         this.opacity = random(0.5, 0.9);
         this.rotation = random(0, 2 * Math.PI);
-        this.rotationSpeed = random(-0.003, 0.003);
+        this.rotationSpeed = random(-0.9, 0.9); // rad/s (50% más rápido)
 
-        this.swaySpeed = random(0.005, 0.015);
-        this.swayAmount = random(0.2, 0.5);
+        // Sway: frecuencia en rad/s y amplitud en px (50% aumento)
+        this.swaySpeed = random(1.5, 4.5); // rad/s (antes 1.0..3.0)
+        this.swayAmount = random(12, 36); // px (antes 8..24)
         this.swayOffset = random(0, Math.PI * 2);
       }
 
       // Avanza la simulación y recicla el pétalo si sale de los límites del canvas
-      update(width, height) {
-        this.y += this.speedY;
-        this.x += this.speedX;
+      // Ahora update acepta dt (segundos) para física basada en tiempo.
+      update(width, height, dt) {
+        // Mover verticalmente según px/segundo
+        this.y += this.speedY * dt;
 
-        this.swayOffset += this.swaySpeed;
-        this.x += Math.sin(this.swayOffset) * this.swayAmount;
+        // Desplazar la posición base horizontal según velocidad lateral
+        this.baseX += this.speedX * dt;
 
-        this.rotation += this.rotationSpeed;
+        // Actualizar fase del sway y aplicar offset calculado sin introducir drift
+        this.swayOffset += this.swaySpeed * dt;
+        this.x = this.baseX + Math.sin(this.swayOffset) * this.swayAmount;
 
-        if (this.y > height + 100 || this.x < -200 || this.x > width + 200) {
+        // Rotación por segundo
+        this.rotation += this.rotationSpeed * dt;
+
+        // Si sale de los límites, reiniciar
+        if (
+          this.y > height + 100 ||
+          this.baseX < -200 ||
+          this.baseX > width + 200
+        ) {
           this.reset(width, height);
         }
       }
@@ -213,9 +230,16 @@ if (!canvas) {
       }
     }
 
-    // Bucle de animación principal
+    // Bucle de animación principal (basado en timestamp -> dt en segundos)
     let rafId = null; // id del requestAnimationFrame activo (si lo hay)
-    function animate() {
+    let lastTs = null; // timestamp del frame anterior
+    function animate(ts) {
+      // Inicializar lastTs en el primer frame
+      if (!lastTs) lastTs = ts;
+      // dt en segundos, cap para evitar saltos gigantes en caso de pausa
+      const dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+
       // Dimensiones actuales del canvas en px CSS
       const width = canvas.clientWidth || document.documentElement.clientWidth;
       const height = canvas.clientHeight || getPageHeight();
@@ -227,7 +251,7 @@ if (!canvas) {
 
       for (let i = 0; i < petals.length; i++) {
         const p = petals[i];
-        p.update(width, height);
+        p.update(width, height, dt);
         p.draw(ctx);
       }
 
@@ -237,6 +261,7 @@ if (!canvas) {
     // Control de reproducción/pausa del bucle
     function play() {
       if (rafId == null) {
+        lastTs = null; // forzar reinicio del contador de tiempo
         rafId = requestAnimationFrame(animate);
       }
     }
@@ -244,6 +269,7 @@ if (!canvas) {
       if (rafId != null) {
         cancelAnimationFrame(rafId);
         rafId = null;
+        lastTs = null;
       }
     }
 
