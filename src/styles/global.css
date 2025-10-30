@@ -46,3 +46,26 @@
 .contenedor {
   @apply max-w-7xl mx-auto px-4;
 }
+
+.nav-anchor {
+  @apply block relative;
+  @apply py-1.5 px-2.5 sm:py-2 sm:px-3 md:px-4;
+  @apply text-sm sm:text-base md:text-base lg:text-lg font-medium whitespace-nowrap;
+  @apply text-gray-100 hover:text-sakura-primary hover:bg-pink-100/15;
+  @apply rounded-lg;
+  @apply transition-all duration-300 hover:-translate-y-0.5;
+}
+
+.nav-anchor::after {
+  content: "";
+  @apply absolute bg-sakura-primary transition-all duration-300;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  transform: translateX(-50%);
+}
+
+.nav-anchor:hover::after {
+  width: 80%;
+}
