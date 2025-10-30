@@ -13,7 +13,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 ## 🔗 Demo
 
-**Live Site:** [Modas Bety 🌸](https://modas-bety-landingpage.vercel.app/)
+**Live Site:** [Modas Bety](https://modas-bety-landingpage.vercel.app/)🌸
 
 <!-- ==================== FEATURES SECTION ==================== -->
 
