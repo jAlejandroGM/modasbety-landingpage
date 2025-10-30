@@ -1,4 +1,5 @@
 ---
+import SakuraCanvas from "../components/layout/SakuraCanvas.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -104,6 +105,9 @@ const structuredData = {
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Preload Sakura Image -->
+    <link rel="preload" as="image" href="/images/flor-de-sakura.png" />
+
     <!-- Structured Data (JSON-LD) -->
     <script
       type="application/ld+json"
@@ -113,13 +117,7 @@ const structuredData = {
   <body
     class="flex flex-col min-h-screen gap-24 text-gray-50 transition-all duration-300"
   >
-    <canvas
-      class="absolute inset-0 pointer-events-none w-full h-100dvh z-0"
-      id="sakura-canvas"></canvas>
-    <div style="position: relative; z-index: 1">
-      <slot />
-    </div>
-
-    <script src="/scripts/sakura-animation.js" defer></script>
+    <SakuraCanvas />
+    <slot />
   </body>
 </html>
