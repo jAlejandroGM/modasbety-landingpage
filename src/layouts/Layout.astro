@@ -110,19 +110,25 @@ const structuredData = {
     <meta name="apple-mobile-web-app-title" content="Modas Bety" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Preload Sakura Image -->
-    <link rel="preload" as="image" href="/images/flor-de-sakura.png" />
-
     <!-- Structured Data (JSON-LD) -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
     />
+
+    <!-- Preload sakura image used by canvas -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/flor-de-sakura.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
   </head>
   <body
     class="flex flex-col min-h-screen gap-24 text-gray-50 transition-all duration-300"
   >
-    <!-- <SakuraCanvas /> -->
+    <SakuraCanvas />
     <slot />
   </body>
 </html>

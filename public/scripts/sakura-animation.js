@@ -89,7 +89,7 @@ if (!canvas) {
       const vh = window.innerHeight || 800;
       const pageH = getPageHeight();
       const scale = Math.min(3, Math.max(1, Math.ceil(pageH / vh))); // 1x..3x
-      return Math.min(180, 60 * scale); // base 60, máx 180
+      return Math.min(120, 60 * scale); // base 60, máx 120
     }
 
     let maxPetals = computeMaxPetals();
@@ -101,7 +101,58 @@ if (!canvas) {
 
     const sakuraImage = new Image();
     // Ubicada en /public/images/... (ruta estable en Astro al estar en public/)
-    sakuraImage.src = "/images/flor-de-sakura.png";
+    sakuraImage.src = "/images/flor-de-sakura.webp";
+
+    // Dibujo acelerado opcional: intentar crear un ImageBitmap después de decodificar
+    // el HTMLImageElement. Esto evita trabajo de decodificación síncrono en el
+    // primer draw y puede reducir el "jank" del primer fotograma. Si
+    // createImageBitmap no está disponible o falla, volvemos a dibujar con el
+    // HTMLImageElement.
+    let sakuraBitmap = null;
+
+    async function prepareImageAndStart() {
+      try {
+        // Preferir esperar a decode() (promesa no bloqueante) para que el
+        // navegador realice el trabajo pesado antes del primer draw.
+        if (typeof sakuraImage.decode === "function") {
+          await sakuraImage.decode();
+        } else {
+          await new Promise((resolve, reject) => {
+            sakuraImage.onload = resolve;
+            sakuraImage.onerror = () =>
+              reject(new Error("sakura image failed to load"));
+          });
+        }
+
+        // Intentar crear un ImageBitmap para dibujar más rápido en algunos
+        // navegadores.
+        if (typeof createImageBitmap === "function") {
+          try {
+            sakuraBitmap = await createImageBitmap(sakuraImage);
+          } catch (err) {
+            // Si falla, seguir usando el HTMLImageElement. No es fatal.
+            sakuraBitmap = null;
+            console.warn("createImageBitmap falló, volviendo a Image:", err);
+          }
+        }
+      } catch (err) {
+        // La decodificación o carga puede fallar; registrar y continuar para no
+        // bloquear la experiencia de usuario.
+        console.warn(
+          "La decodificación/carga de la imagen falló; la animación intentará iniciarse de todos modos:",
+          err
+        );
+      } finally {
+        // Respetar preferencia de movimiento reducido; no iniciar si el usuario
+        // optó por reducir el movimiento.
+        if (prefersReducedMotion.matches) return;
+        initParticles();
+        play();
+      }
+    }
+    // Iniciar la preparación en segundo plano (el rel="preload" en head
+    // acelera la descarga de la imagen).
+    prepareImageAndStart();
 
     // Representa un pétalo individual con posición, movimiento y renderizado
     class Petal {
@@ -147,8 +198,11 @@ if (!canvas) {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
 
+        // Use the ImageBitmap if available (faster on some platforms). Fallback
+        // to the HTMLImageElement when bitmap isn't available.
+        const img = sakuraBitmap || sakuraImage;
         ctx.drawImage(
-          sakuraImage,
+          img,
           -this.size / 2,
           -this.size / 2,
           this.size,
@@ -225,16 +279,7 @@ if (!canvas) {
       }
     });
 
-    // Cargar imagen y lanzar la simulación
-    sakuraImage.onload = () => {
-      if (prefersReducedMotion.matches) {
-        // Respetar la preferencia: no iniciar animación
-        return;
-      }
-      initParticles();
-      play();
-    };
-
+    // Cargar imagen: startup is handled by prepareImageAndStart(); log errors here.
     sakuraImage.onerror = () => {
       console.error("Error cargando imagen de sakura:", sakuraImage.src);
     };
