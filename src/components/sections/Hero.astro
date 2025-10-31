@@ -1,37 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+import HeroWspBtn from "../ui/HeroWspBtn.astro";
+import HeroLogo from "../ui/HeroLogo.astro";
+import HeroEslogan from "../ui/HeroEslogan.astro";
 ---
 
 <section id="inicio" class="hero">
   <div class="contenedor">
-    <div class="hero-logo">
-      <img
-        src="/images/Modas Bety (sin fondo).png"
-        alt="Modas Bety - Taller de alta costura y confección a medida"
-        width="720"
-        height="450"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
-    <p class="hero-descriptor">
-      <span class="descriptor-main">Taller de Alta Costura para Damas</span>
-      <span class="descriptor-sub"
-        >Más de 15 años creando momentos especiales</span
-      >
-    </p>
-    <h1 class="eslogan">Diseños exclusivos para momentos inolvidables</h1>
-    <div class="acciones">
-      <a
-        href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
-        target="_blank"
-        class="relative flex items-center gap-3 px-8 py-4 font-medium text-whatsapp no-underline border-2 border-whatsapp/30 rounded-full overflow-hidden bg-whatsapp/10 backdrop-blur-sm transition-all duration-300 hover:text-gray-50 hover:shadow-[0_4px_20px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 hover:bg-whatsapp group"
-        rel="noopener noreferrer"
-        aria-label="Solicitar cotización por WhatsApp - Abre en una nueva ventana"
-      >
-        Solicita tu cotización
-        <Icon name="mdi:whatsapp" class="h-6 w-6" />
-      </a>
+    <HeroLogo />
+    <HeroEslogan />
+    <div class="acciones flex flex-col gap-4 justify-center items-center">
+      <HeroWspBtn />
       <button
         onclick="copiarTelefono()"
         aria-label="Copiar número de teléfono al portapapeles"
@@ -43,121 +22,14 @@ import { Icon } from "astro-icon/components";
           <Icon name="mdi:check" />
         </div>
       </button>
-      <p class="hero-urgency">
-        <span class="urgency-icon">✨</span>
-        Cita gratuita - Agenda ya, cupos limitados
+      <p class="text-sm text-sakura-primary/90 mt-2">
+        ✨ Cita gratuita - Agenda ya, cupos limitados
       </p>
     </div>
   </div>
 </section>
 
 <style>
-  .hero .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .hero-logo {
-    width: 100%;
-    max-width: 612px;
-    height: 323px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-logo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    filter: drop-shadow(0 8px 16px rgba(232, 180, 184, 0.4));
-    transition: transform 0.3s ease;
-    object-fit: cover;
-    object-position: center 50%;
-    animation: breathe 6s ease-in-out infinite;
-  }
-
-  @keyframes breathe {
-    0%,
-    100% {
-      opacity: 0.7;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  .hero-logo img:hover {
-    transform: scale(1.1);
-  }
-
-  .hero-descriptor {
-    font-size: 1.2rem;
-    color: var(--sakura-primary);
-    letter-spacing: 0.5px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .descriptor-main {
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
-
-  .descriptor-sub {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-style: italic;
-    font-family: "Playfair Display", serif;
-  }
-
-  .eslogan {
-    font-size: 3rem;
-    color: #f8f9fa;
-    font-weight: 700;
-    font-family: "Playfair Display", serif;
-    text-align: center;
-  }
-
-  .acciones {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .acciones .buttons-row {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .boton-wsp {
-    background: rgba(34, 197, 94, 0.1);
-    backdrop-filter: blur(10px);
-    position: relative;
-    padding: 16px 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    border: 2px solid rgba(34, 197, 94, 0.3);
-    border-radius: 30px;
-    overflow: hidden;
-    color: var(--whatsapp-green);
-    transition: all 0.3s ease;
-    --wsp-fill: var(--whatsapp-green);
-    --wsp-stroke: transparent;
-  }
-
   .acciones button {
     background: transparent;
     border: 1px solid var(--sakura-primary);
@@ -192,69 +64,11 @@ import { Icon } from "astro-icon/components";
     transform: scale(0.8);
   }
 
-  .boton-wsp svg {
-    width: 24px;
-    height: 24px;
-    transition: all 0.3s ease;
-  }
-
-  .boton-wsp::before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    content: "";
-    border-radius: 50%;
-    width: 20em;
-    height: 20em;
-    transition: box-shadow 0.4s ease;
-    z-index: -1;
-  }
-
-  .boton-wsp:hover {
-    color: var(--off-white);
-    --wsp-fill: var(--off-white);
-    --wsp-stroke: transparent;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
-  }
-
-  .boton-wsp:hover::before {
-    box-shadow: inset 0 0 0 10em var(--whatsapp-green);
-  }
-
   .acciones button:hover {
     background: rgba(255, 192, 203, 0.1);
     border-color: var(--sakura-hover);
     transform: translateY(-2px);
     box-shadow: 0 4px 20px rgba(255, 192, 203, 0.4);
-  }
-
-  .hero-urgency {
-    font-size: 0.85rem;
-    color: var(--sakura-primary);
-    opacity: 0.9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .urgency-icon {
-    animation: sparkle 3s infinite;
-  }
-
-  @keyframes sparkle {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.7;
-      transform: scale(1.1);
-    }
   }
 
   @media (max-width: 768px) {

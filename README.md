@@ -43,7 +43,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 ## Project Structure
 
-```
+```text
 modasbety/
 ├── public/
 │   ├── icons/              # UI and social media icons

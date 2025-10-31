@@ -5,18 +5,19 @@
   --color-sakura-hover: #ffb3ba;
   --color-whatsapp: #22c55e;
   --font-text: "Inter", system-ui, -apple-system, sans-serif;
+  --font-subs: "Playfair Display", serif;
 }
 
 @layer base {
   body {
     background: radial-gradient(
         circle at 20% 50%,
-        rgba(212, 175, 55, 0.15) 0%,
+        rgba(212, 175, 55, 0.08) 0%,
         transparent 50%
       ),
       radial-gradient(
         circle at 80% 20%,
-        rgba(233, 30, 99, 0.15) 0%,
+        rgba(233, 30, 99, 0.08) 0%,
         transparent 50%
       ),
       linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #5e2227 100%);
@@ -44,7 +45,7 @@
 }
 
 .contenedor {
-  @apply max-w-7xl mx-auto px-4;
+  @apply flex flex-col items-center gap-8 max-w-7xl mx-auto px-4;
 }
 
 .nav-anchor {
@@ -68,4 +69,21 @@
 
 .nav-anchor:hover::after {
   width: 80%;
+}
+
+.logo {
+  @apply w-full h-full block object-cover object-center transition-transform duration-300 hover:scale-110;
+  filter: drop-shadow(0 8px 16px rgba(232, 180, 184, 0.4));
+  animation: breathe 6s ease-in-out infinite;
+  user-select: none;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
