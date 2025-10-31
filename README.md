@@ -33,6 +33,7 @@ _A modern, responsive SPA for a haute couture atelier in Trujillo, Peru._
 
 - **Astro 5** — Static site generator
 - **Tailwind CSS 4** — Utility-first CSS framework (migration in progress)
+- **Astro Icon** — Icon integration for optimized SVG icons
 - **JavaScript** — Client-side scripts for animations and interactions
 - **TypeScript** — Type-safe JavaScript
 - **HTML5 / CSS3** — Semantic markup and modern styling
@@ -53,7 +54,6 @@ modasbety/
 │   │   ├── layout/         # Layout components (Header, Footer, etc.)
 │   │   ├── sections/       # Page sections (Hero, Services, etc.)
 │   │   └── ui/             # UI components
-│   ├── icons/              # SVG icons
 │   ├── layouts/            # Base layout with SEO configuration
 │   ├── pages/              # Application pages
 │   └── styles/             # Global CSS and variables
