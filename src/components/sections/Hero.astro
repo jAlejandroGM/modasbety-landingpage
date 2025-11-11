@@ -1,8 +1,8 @@
 ---
-import { Icon } from "astro-icon/components";
 import HeroWspBtn from "../ui/HeroWspBtn.astro";
 import HeroLogo from "../ui/HeroLogo.astro";
 import HeroEslogan from "../ui/HeroEslogan.astro";
+import HeroCopyBtn from "../ui/HeroCopyBtn.astro";
 ---
 
 <section id="inicio" class="hero">
@@ -11,139 +11,10 @@ import HeroEslogan from "../ui/HeroEslogan.astro";
     <HeroEslogan />
     <div class="acciones flex flex-col gap-4 justify-center items-center">
       <HeroWspBtn />
-      <button
-        onclick="copiarTelefono()"
-        aria-label="Copiar número de teléfono al portapapeles"
-        id="copy-button"
-      >
-        <span class="button-text">Copiar número</span>
-        <div class="button-icon">
-          <Icon name="mdi:content-copy" />
-          <Icon name="mdi:check" />
-        </div>
-      </button>
+      <HeroCopyBtn />
       <p class="text-sm text-sakura-primary/90 mt-2">
         ✨ Cita gratuita - Agenda ya, cupos limitados
       </p>
     </div>
   </div>
 </section>
-
-<style>
-  .acciones button {
-    background: transparent;
-    border: 1px solid var(--sakura-primary);
-    border-radius: 8px;
-    color: var(--off-white);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    padding: 8px 12px;
-    min-width: 150px;
-  }
-
-  .acciones button .copy-icon,
-  .acciones button .check-icon {
-    width: 18px;
-    height: 18px;
-    fill: var(--off-white);
-    transition:
-      opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .acciones button .check-icon {
-    fill: #22c55e;
-    display: none;
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  .acciones button:hover {
-    background: rgba(255, 192, 203, 0.1);
-    border-color: var(--sakura-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 192, 203, 0.4);
-  }
-
-  @media (max-width: 768px) {
-    .hero-logo {
-      max-width: 85vw;
-      height: 230px;
-    }
-
-    .hero-descriptor {
-      font-size: 1rem;
-    }
-
-    .hero-descriptor {
-      font-size: 1.1rem;
-    }
-
-    .descriptor-main {
-      font-size: 1.2rem;
-    }
-
-    .descriptor-sub {
-      font-size: 0.95rem;
-    }
-
-    .eslogan {
-      font-size: 2.2rem;
-    }
-
-    .acciones {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .buttons-row {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .boton-wsp,
-    .acciones button {
-      width: 100%;
-      max-width: 280px;
-      justify-content: center;
-    }
-
-    .boton-wsp {
-      padding: 14px 24px;
-      font-size: 1rem;
-    }
-
-    .acciones button {
-      padding: 10px 16px;
-      font-size: 0.9rem;
-      min-width: auto;
-    }
-
-    .hero-urgency {
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-logo {
-      max-width: 85vw;
-      height: 190px;
-    }
-
-    .hero-descriptor {
-      font-size: 0.9rem;
-    }
-
-    .eslogan {
-      font-size: 1.8rem;
-    }
-  }
-</style>

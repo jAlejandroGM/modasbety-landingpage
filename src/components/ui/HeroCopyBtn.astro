@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  onclick="copyNum(this)"
+  aria-label="Copiar número de teléfono al portapapeles"
+  class="flex items-center justify-center gap-1.5 px-5 py-2 min-w-36 border rounded-lg border-sakura-primary bg-transparent transition-all duration-300 ease-in-out cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(255,192,203,0.4)] hover:bg-sakura-primary/10"
+>
+  <span class="text-sm">Copiar número</span>
+
+  <div class="flex items-center">
+    <Icon class="copy-icon" name="mdi:content-copy" />
+    <Icon class="check-icon text-green-500" name="mdi:check" />
+  </div>
+</button>
+
+<script src="/scripts/components/copyBtn.js" defer></script>
