@@ -4,21 +4,21 @@ import { Icon } from "astro-icon/components";
 
 <section
   id="servicios"
-  class="servicios"
+  class="flex flex-col items-center gap-12"
   role="region"
   aria-labelledby="servicios-titulo"
 >
   <div class="contenedor">
-    <h2 id="servicios-titulo">
+    <h2 class="text-center text-4xl font-serif text-white">
       Tu Estilo,<br />
       Nuestra Especialidad
     </h2>
-    <p class="servicios-intro">
+    <p class="text-center text-xl text-white max-w-xl m-auto">
       Creamos prendas únicas para cada ocasión especial de tu vida
     </p>
   </div>
 
-  <div class="slider">
+  <div class="overflow-hidden w-[99%] px-8 m-auto relative slider">
     <div class="servicios-grid">
       <div class="servicio-card surface-panel">
         <div class="servicio-icon">👰</div>
@@ -102,37 +102,9 @@ import { Icon } from "astro-icon/components";
   </div>
 </section>
 
+<!-- <script src="/public/scripts/components/slider.js"></script> -->
+
 <style>
-  .servicios {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  .servicios h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--off-white);
-    font-family: "Playfair Display", serif;
-  }
-
-  .servicios-intro {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #bdc3c7;
-    max-width: 600px;
-    margin: auto;
-  }
-
-  .slider {
-    overflow: hidden;
-    width: 98vw;
-    padding: 2rem 0;
-    margin: auto;
-    position: relative;
-  }
-
   .slider::before,
   .slider::after {
     position: absolute;
