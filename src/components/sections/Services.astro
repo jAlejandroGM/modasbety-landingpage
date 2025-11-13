@@ -18,7 +18,7 @@ import { Icon } from "astro-icon/components";
     </p>
   </div>
 
-  <div class="overflow-hidden w-full py-8 m-auto relative slider">
+  <div class="slider overflow-hidden w-full py-8 m-auto relative">
     <div class="servicios-grid flex">
       <div class="servicio-card surface-panel">
         <div class="text-5xl">👰</div>
@@ -86,7 +86,7 @@ import { Icon } from "astro-icon/components";
 
   <div class="contenedor">
     <div
-      class="flex flex-col gap-4 p-8 border border-sakura-primary rounded-2xl bg-linear-135 from-sakura-primary/10 to-sakura-hover/10"
+      class="flex flex-col gap-4 p-8 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)]"
     >
       <p class="text-xl font-medium text-sakura-primary">
         ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin
@@ -95,12 +95,12 @@ import { Icon } from "astro-icon/components";
       <a
         href="https://wa.me/51947620202?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20confección.%20¿Podrían%20proporcionarme%20información%20detallada?"
         target="_blank"
-        class="bg-whatsapp/10 py-4 px-8 w-auto self-center flex items-center justify-center gap-3 font-medium border-2 rounded-4xl border-whatsapp/30 text-whatsapp transition-all duration-300 hover:-translate-0.5 hover:shadow-[0_4px_20px_rgba(34,197,94,0.4)]"
+        class="wsp-btn self-center flex"
         rel="noopener noreferrer"
         aria-label="Solicitar información detallada por WhatsApp"
       >
         Agenda tu asesoría
-        <Icon name="mdi:whatsapp" class="h-8 w-8 text-whatsapp" />
+        <Icon name="mdi:whatsapp" class="h-8 w-8 text-inherit" />
       </a>
     </div>
   </div>
@@ -112,9 +112,9 @@ import { Icon } from "astro-icon/components";
   .slider::before,
   .slider::after {
     position: absolute;
-    top: 0;
+    top: 2rem;
     width: 150px;
-    height: 100%;
+    height: calc(100% - 4rem);
     pointer-events: none;
     content: "";
     z-index: 1;
@@ -132,8 +132,8 @@ import { Icon } from "astro-icon/components";
     background: linear-gradient(
       to left,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 192, 203, 0.12) 80%,
-      rgba(255, 192, 203, 0.18) 100%
+      rgba(255, 192, 203, 0.06) 80%,
+      rgba(255, 192, 203, 0.1) 100%
     );
   }
 
@@ -142,8 +142,8 @@ import { Icon } from "astro-icon/components";
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 192, 203, 0.12) 80%,
-      rgba(255, 192, 203, 0.18) 100%
+      rgba(255, 192, 203, 0.06) 80%,
+      rgba(255, 192, 203, 0.12) 100%
     );
   }
 
@@ -183,8 +183,9 @@ import { Icon } from "astro-icon/components";
 
   .servicio-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 192, 203, 0.1);
+    /* background: rgba(255, 192, 203, 0.1); Antiguo bg rosa opaco*/
+    background: transparent;
     border-color: rgba(255, 192, 203, 0.3);
-    box-shadow: 0 8px 30px rgba(255, 192, 203, 0.2);
+    box-shadow: 0 0 35px rgba(255, 192, 203, 0.2);
   }
 </style>
