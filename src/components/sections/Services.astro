@@ -1,5 +1,49 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const servicios = [
+  {
+    icon: "👰",
+    titulo: "Vestidos de Novia",
+    descripcion:
+      "Diseños únicos para el día más especial. Hacemos realidad el vestido de tus sueños.",
+  },
+  {
+    icon: "🌟",
+    titulo: "Vestidos de Fiesta",
+    descripcion:
+      "Elegancia y sofisticación para eventos especiales. Cada vestido refleja tu personalidad única.",
+  },
+  {
+    icon: "🌙",
+    titulo: "Vestidos de Noche",
+    descripcion:
+      "Glamour y distinción para veladas especiales. Diseños que destacan tu belleza natural.",
+  },
+  {
+    icon: "👑",
+    titulo: "Vestidos de Quinceañera",
+    descripcion:
+      "Hacemos realidad el vestido de tus sueños para una noche de quince años inolvidable.",
+  },
+  {
+    icon: "🎓",
+    titulo: "Vestidos de Promoción",
+    descripcion: "Haz de tu graduación una noche única con elegancia y estilo.",
+  },
+  {
+    icon: "👔",
+    titulo: "Sastrería para Damas",
+    descripcion:
+      "Trajes ejecutivos y formales. Confección a medida para la mujer profesional moderna.",
+  },
+  {
+    icon: "👗",
+    titulo: "Ropa Casual Premium",
+    descripcion:
+      "Blusas, pantalones y prendas del día a día con acabados de alta costura.",
+  },
+];
 ---
 
 <section
@@ -8,102 +52,54 @@ import { Icon } from "astro-icon/components";
   role="region"
   aria-labelledby="servicios-titulo"
 >
-  <div class="contenedor">
-    <h2 class="text-center text-4xl font-bold font-subs text-white">
+  <div>
+    <h2 class="text-center text-4xl font-bold font-subs text-white leading-14">
       Tu Estilo,<br />
       Nuestra Especialidad
     </h2>
-    <p class="text-center text-xl text-white max-w-xl m-auto">
+    <p class="text-center text-xl text-gray-300 max-w-xl m-auto">
       Creamos prendas únicas para cada ocasión especial de tu vida
     </p>
   </div>
 
   <div class="slider overflow-hidden w-full py-8 m-auto relative">
-    <div class="servicios-grid flex">
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">👰</div>
-        <h3 class="text-xl">Vestidos de Novia</h3>
-        <p class="leading-6">
-          Diseños únicos para el día más especial. Hacemos realidad el vestido
-          de tus sueños.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">🌟</div>
-        <h3 class="text-xl">Vestidos de Fiesta</h3>
-        <p class="leading-6">
-          Elegancia y sofisticación para eventos especiales. Cada vestido
-          refleja tu personalidad única.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">🌙</div>
-        <h3 class="text-xl">Vestidos de Noche</h3>
-        <p class="leading-6">
-          Glamour y distinción para veladas especiales. Diseños que destacan tu
-          belleza natural.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">👑</div>
-        <h3 class="text-xl">Vestidos de Quinceañera</h3>
-        <p class="leading-">
-          Hacemos realidad el vestido de tus sueños para una noche de quince
-          años inolvidable.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">🎓</div>
-        <h3>Vestidos de Promoción</h3>
-        <p class="leading-6">
-          Haz de tu graduación una noche única con elegancia y estilo.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">👔</div>
-        <h3 class="text-xl">Sastrería para Damas</h3>
-        <p class="leading-6">
-          Trajes ejecutivos y formales. Confección a medida para la mujer
-          profesional moderna.
-        </p>
-      </div>
-
-      <div class="servicio-card surface-panel">
-        <div class="text-5xl">👗</div>
-        <h3 class="text-xl">Ropa Casual Premium</h3>
-        <p class="leading-6">
-          Blusas, pantalones y prendas del día a día con acabados de alta
-          costura.
-        </p>
-      </div>
-    </div>
+    <ul id="servicios-grid" class="flex">
+      {
+        servicios.map((servicio) => (
+          <li
+            id="servicios-card"
+            class="surface-panel flex flex-col align-center text-center gap-4 flex-none w-xs h-auto py-12 px-8 mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]"
+          >
+            <span class="text-5xl">{servicio.icon}</span>
+            <h3 class="font-text text-xl font-bold">{servicio.titulo}</h3>
+            <p class="leading-7 text-gray-300">{servicio.descripcion}</p>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 
-  <div class="contenedor">
-    <div
-      class="flex flex-col gap-4 p-8 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)]"
+  <aside
+    class="flex flex-col gap-4 p-8 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)]"
+  >
+    <p class="text-xl font-medium text-sakura-primary">
+      ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin costo.
+    </p>
+    <a
+      href="https://wa.me/51947620202?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20confección.%20¿Podrían%20proporcionarme%20información%20detallada?"
+      target="_blank"
+      class="wsp-btn self-center flex"
+      rel="noopener noreferrer"
+      aria-label="Solicitar información detallada por WhatsApp"
     >
-      <p class="text-xl font-medium text-sakura-primary">
-        ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin
-        costo.
-      </p>
-      <a
-        href="https://wa.me/51947620202?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20confección.%20¿Podrían%20proporcionarme%20información%20detallada?"
-        target="_blank"
-        class="wsp-btn self-center flex"
-        rel="noopener noreferrer"
-        aria-label="Solicitar información detallada por WhatsApp"
-      >
-        Agenda tu asesoría
-        <Icon name="mdi:whatsapp" class="h-8 w-8 text-inherit" />
-      </a>
-    </div>
-  </div>
+      Agenda tu asesoría
+      <Icon
+        name="mdi:whatsapp"
+        class="h-8 w-8 text-inherit"
+        aria-hidden="true"
+      />
+    </a>
+  </aside>
 </section>
 
 <script type="module" src="/scripts/components/slider.js"></script>
@@ -147,29 +143,13 @@ import { Icon } from "astro-icon/components";
     );
   }
 
-  .servicios-grid:hover {
+  #servicios-grid:hover {
     animation-play-state: paused;
   }
 
-  .servicios-grid {
+  #servicios-grid {
     animation: scroll 40s linear infinite;
     width: calc((320px + 2rem) * 7);
-  }
-
-  .servicio-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    flex: 0 0 auto;
-    width: 320px;
-    height: auto;
-    padding: 3rem 2rem;
-    margin-right: 2rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    text-align: center;
-    transition: all 0.3s ease;
   }
 
   @keyframes scroll {
@@ -179,13 +159,5 @@ import { Icon } from "astro-icon/components";
     to {
       transform: translateX(-100%);
     }
-  }
-
-  .servicio-card:hover {
-    transform: translateY(-5px);
-    /* background: rgba(255, 192, 203, 0.1); Antiguo bg rosa opaco*/
-    background: transparent;
-    border-color: rgba(255, 192, 203, 0.3);
-    box-shadow: 0 0 35px rgba(255, 192, 203, 0.2);
   }
 </style>
