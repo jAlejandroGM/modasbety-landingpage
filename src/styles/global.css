@@ -1,35 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sakura-primary: #ffc0cb;
-  --color-sakura-hover: #ffb3ba;
-  --color-whatsapp: #22c55e;
+  --color-sakura-primary: rgb(255, 192, 203);
+  --color-sakura-hover: rgb(255, 179, 186);
+  --color-whatsapp: rgb(34, 197, 94);
   --font-text: "Inter", system-ui, -apple-system, sans-serif;
   --font-subs: "Playfair Display", serif;
 }
 
 @layer base {
   body {
-    /* background: radial-gradient(
-        circle at 20% 50%,
-        rgba(212, 175, 55, 0.08) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(233, 30, 99, 0.08) 0%,
-        transparent 50%
-      ),
-      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #5e2227 100%); */
     background: black;
-  }
-  ul {
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
   }
 }
 
@@ -45,8 +26,12 @@
   }
 }
 
+h2 {
+  @apply text-center text-4xl font-bold font-subs text-white leading-14;
+}
+
 .contenedor {
-  @apply flex flex-col items-center gap-8 max-w-7xl mx-auto px-4;
+  @apply flex flex-col items-center gap-8 w-full max-w-7xl mx-auto px-4;
 }
 
 .nav-anchor {

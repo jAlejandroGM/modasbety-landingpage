@@ -49,11 +49,10 @@ const servicios = [
 <section
   id="servicios"
   class="flex flex-col items-center gap-12"
-  role="region"
   aria-labelledby="servicios-titulo"
 >
   <div>
-    <h2 class="text-center text-4xl font-bold font-subs text-white leading-14">
+    <h2>
       Tu Estilo,<br />
       Nuestra Especialidad
     </h2>
@@ -63,20 +62,20 @@ const servicios = [
   </div>
 
   <div class="slider overflow-hidden w-full py-8 m-auto relative">
-    <ul id="servicios-grid" class="flex">
+    <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <li
+          <article
             id="servicios-card"
             class="surface-panel flex flex-col align-center text-center gap-4 flex-none w-xs h-auto py-12 px-8 mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]"
           >
             <span class="text-5xl">{servicio.icon}</span>
             <h3 class="font-text text-xl font-bold">{servicio.titulo}</h3>
             <p class="leading-7 text-gray-300">{servicio.descripcion}</p>
-          </li>
+          </article>
         ))
       }
-    </ul>
+    </div>
   </div>
 
   <aside
@@ -102,7 +101,10 @@ const servicios = [
   </aside>
 </section>
 
-<script type="module" src="/scripts/components/slider.js"></script>
+<script>
+  import { initSlider } from "../../scripts/components/slider.js";
+  initSlider();
+</script>
 
 <style>
   .slider::before,

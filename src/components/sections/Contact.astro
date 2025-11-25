@@ -4,284 +4,70 @@ import { Icon } from "astro-icon/components";
 
 <section
   id="ubicacion"
-  class="ubicacion"
+  class="flex flex-col items-center gap-12"
   role="region"
   aria-labelledby="ubicacion-titulo"
 >
-  <div class="contenedor">
-    <h2 id="ubicacion-titulo">Encuéntranos</h2>
-    <div class="ubicacion-body">
-      <section class="ubi-mapa" aria-label="Mapa de ubicación">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.756513698254!2d-79.02167642241776!3d-8.12625418134591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad17790af131f7%3A0xc77d68ccfcf3cee2!2sModas%20Bety!5e0!3m2!1sen!2spe!4v1755303610052!5m2!1sen!2spe"
-          width="100%"
-          height="500"
-          style="border: 0"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación de Modas Bety en Google Maps"
-          aria-label="Mapa interactivo mostrando la ubicación de Modas Bety"
-        ></iframe>
-      </section>
-      <section class="ubi-info" aria-label="Información de contacto">
-        <address>
-          <ul class="ubi-info-list">
-            <li class="ubi-dir">
-              <div>
-                <span class="li-title">Dirección:</span><br />
-                <span
-                  >Calle José Dolores López 315, Urb. Santa María 5ta Etapa,
-                  Trujillo</span
-                >
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=-8.12625418134591,-79.02167642241776"
-                  target="_blank"
-                  class="ubi-dir-btn"
-                  rel="noopener noreferrer"
-                  aria-label="Cómo llegar a Modas Bety"
-                >
-                  <Icon name="mdi:directions" />
-                </a>
-              </div>
-              <div>
-                <span class="li-title">Referencia:</span><br />
-                <span
-                  >A la altura de la Empresa de Transporte America Express y el
-                  Patio de Llaves de Hidrandina</span
-                >
-              </div>
-            </li>
+  <h2>Encuéntranos</h2>
+  <div class="flex gap-8 items-center w-11/12">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.756513698254!2d-79.02167642241776!3d-8.12625418134591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad17790af131f7%3A0xc77d68ccfcf3cee2!2sModas%20Bety!5e0!3m2!1sen!2spe!4v1755303610052!5m2!1sen!2spe"
+      class="h-100 w-4/6 border-2 rounded-3xl border-sakura-primary shadow-[0_0_60px_rgba(255,192,203,0.5)]"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      aria-label="Mapa interactivo mostrando la ubicación de Modas Bety"
+    ></iframe>
 
-            <li class="ubi-hor-cont">
-              <div>
-                <span class="li-title">Horario de atención:</span><br />
-                <span>Lunes a Sábado de:</span>
-                <ul>
-                  <li>9:00 am – 1:00 pm</li>
-                  <li>3:00 pm – 8:00 pm</li>
-                </ul>
-              </div>
-              <div>
-                <span class="li-title">Teléfono:</span><br />
-                <span class="ubi-tlfn">
-                  +51 947 620 202
-                  <button
-                    class="ubi-tlfn-btn"
-                    onclick="copiarTelefono2(this)"
-                    aria-label="Copiar número de teléfono"
-                  >
-                    <Icon name="mdi:content-copy" />
-                  </button></span>
-              </div>
-            </li>
-          </ul>
-        </address>
-      </section>
-    </div>
+    <address class="flex flex-col gap-8 not-italic">
+      <div class="flex gap-4 items-center">
+        <Icon class="text-sakura-primary size-8" name="mdi:store-marker" />
+        <div class="flex flex-col gap-2 w-3/4">
+          <p>
+            Calle José Dolores López 315, Urb. Santa María 5ta Etapa, Trujillo.
+          </p>
+
+          <p>
+            A la altura de la Empresa de Transporte America Express y el Patio
+            de Llaves de Hidrandina.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <Icon class="text-sakura-primary size-8" name="mdi:directions" />
+
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=-8.12625418134591,-79.02167642241776"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Cómo llegar a Modas Bety"
+          class="text-sakura-primary hover:underline underline-offset-4"
+        >
+          Ver como llegar
+        </a>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <Icon class="text-sakura-primary size-8" name="mdi:calendar-clock" />
+        <div class="flex flex-col">
+          <p>Atención de Lunes a Sábado de:</p>
+          <p>9:00 AM a 1:00 PM & 3:00 PM a 7:00 PM</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <Icon class="text-sakura-primary size-8" name="mdi:phone" />
+        <span>+51 947 620 202</span>
+        <button
+          onclick="copiarTelefono2()"
+          aria-label="Copiar número de teléfono"
+          title="Copiar número de teléfono"
+          class="p-2 border rounded-full border-sakura-primary cursor-pointer transition-all duration-300 hover:bg-sakura-hover/20"
+        >
+          <Icon class="text-sakura-primary size-6" name="mdi:content-copy" />
+        </button>
+      </div>
+    </address>
   </div>
 </section>
-
-<style>
-  .ubicacion .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  .ubicacion h2 {
-    font-size: 2.5rem;
-    color: var(--off-white);
-    font-family: "Playfair Display", serif;
-    text-align: center;
-  }
-
-  .ubicacion-body {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    padding: 3rem;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 192, 203, 0.08),
-      rgba(255, 182, 193, 0.12)
-    );
-    border-radius: 24px;
-    border: 1px solid rgba(255, 192, 203, 0.2);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  }
-
-  .ubi-mapa {
-    width: 100%;
-    border: 3px solid var(--sakura-primary);
-    border-radius: 20px;
-    box-shadow: 0 0 15px 0 var(--sakura-hover);
-    overflow: hidden;
-    transition: box-shadow 0.3s;
-  }
-
-  .ubi-mapa iframe {
-    width: 100%;
-    max-width: 1200px;
-    height: 500px;
-    border: none;
-    display: block;
-  }
-
-  .ubi-info {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ubi-info-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-style: normal;
-    color: var(--off-white);
-    gap: 7rem;
-  }
-
-  .ubi-info-list > li {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .li-title {
-    font-size: 1.2rem;
-    color: var(--sakura-primary);
-  }
-
-  .ubi-dir-btn,
-  .ubi-tlfn-btn {
-    display: inline-flex;
-    width: fit-content;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background-color: transparent;
-    color: var(--off-white);
-    border: 1.5px solid var(--sakura-primary);
-    border-radius: 100%;
-    padding: 5px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .ubi-dir-btn:hover,
-  .ubi-tlfn-btn:hover {
-    box-shadow: 0 2px 12px rgba(255, 192, 203, 0.22);
-    transform: translateY(-1px);
-  }
-
-  .ubi-dir-btn svg,
-  .ubi-tlfn-btn svg {
-    height: 20px;
-    width: 20px;
-  }
-
-  .ubi-tlfn-btn {
-    position: relative;
-  }
-
-  .ubi-tlfn-btn.copied::after {
-    content: "¡Copiado!";
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--sakura-primary);
-    color: var(--dark-text);
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 8px rgba(255, 192, 203, 0.18);
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    z-index: 10;
-  }
-
-  @media (max-width: 768px) {
-    .ubicacion h2 {
-      font-size: 2.2rem;
-    }
-    .ubicacion-body {
-      padding: 1.5rem;
-      gap: 1rem;
-      border-radius: 16px;
-    }
-    .ubi-mapa {
-      border-radius: 12px;
-    }
-    .ubi-mapa iframe {
-      height: 260px;
-      max-width: 100vw;
-    }
-    .ubi-info-list {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    .ubi-info-list > li {
-      gap: 0.5rem;
-    }
-    .ubi-dir-btn,
-    .ubi-tlfn-btn {
-      padding: 4px;
-      font-size: 0.95rem;
-    }
-    .ubi-dir-btn svg,
-    .ubi-tlfn-btn svg {
-      height: 18px;
-      width: 18px;
-    }
-    .ubi-tlfn-btn.copied::after {
-      font-size: 0.75rem;
-      top: -28px;
-      padding: 3px 10px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .ubicacion h2 {
-      font-size: 1.7rem;
-    }
-    .ubicacion-body {
-      border-radius: 8px;
-    }
-    .ubi-mapa {
-      border-radius: 8px;
-    }
-    .ubi-mapa iframe {
-      height: 200px;
-    }
-    .ubi-info-list {
-      gap: 0.5rem;
-    }
-    .ubi-info-list > li {
-      font-size: 0.8rem;
-    }
-    .li-title {
-      font-size: 1rem;
-    }
-    .ubi-dir-btn,
-    .ubi-tlfn-btn {
-      font-size: 0.9rem;
-      padding: 2px;
-    }
-    .ubi-dir-btn svg,
-    .ubi-tlfn-btn svg {
-      height: 16px;
-      width: 16px;
-    }
-    .ubi-tlfn-btn.copied::after {
-      font-size: 0.7rem;
-      top: -22px;
-      padding: 2px 8px;
-    }
-  }
-</style>

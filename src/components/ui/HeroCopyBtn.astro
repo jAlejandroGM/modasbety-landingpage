@@ -15,4 +15,7 @@ import { Icon } from "astro-icon/components";
   </div>
 </button>
 
-<script src="/scripts/components/copyBtn.js" defer></script>
+<script>
+  import { initCopyBtn } from "../../scripts/components/copyBtn.js";
+  initCopyBtn();
+</script>
