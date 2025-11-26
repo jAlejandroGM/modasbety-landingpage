@@ -3,123 +3,22 @@ import { Icon } from "astro-icon/components";
 ---
 
 <section
-  id="cta"
-  class="cta-section"
-  role="region"
-  aria-labelledby="cta-titulo"
+  class="flex flex-col gap-12 w-full items-center bg-linear-to-br from-sakura-primary via-[#fd7fa9] to-sakura-primary py-22"
 >
-  <div class="contenedor">
-    <div class="cta-content">
-      <h3 id="cta-titulo">¿Lista para hacer realidad tu diseño soñado?</h3>
-      <p class="cta-subtitle">
-        Agenda tu asesoría personalizada y recibe tu cotización sin compromiso.
-      </p>
-      <a
-        href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
-        target="_blank"
-        class="cta-main-button"
-        rel="noopener noreferrer"
-        aria-label="Obtener cotización gratuita por WhatsApp"
-      >
-        <span>Agenda tu cotización gratuita ahora</span>
-        <Icon name="mdi:whatsapp" class="w-8 h-8" />
-      </a>
-    </div>
-  </div>
+  <h3 class="font-bold text-5xl font-subs">
+    ¿Lista para hacer realidad tu diseño soñado?
+  </h3>
+  <p class="text-xl">
+    Agenda tu asesoría personalizada y recibe tu cotización sin compromiso.
+  </p>
+  <a
+    class="inline-flex items-center gap-3 px-8 py-4 bg-neutral-200 text-rose-300 rounded-full hover:-translate-y-1 hover:scale-110 transition-all duration-300 shadow-lg shadow-sakura-hover/70 font-medium text-lg"
+    href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Obtener cotización gratuita por WhatsApp"
+  >
+    <span>Agenda tu cotización gratuita ahora</span>
+    <Icon name="mdi:whatsapp" class="size-8" />
+  </a>
 </section>
-
-<style>
-  .cta-section {
-    background: linear-gradient(
-      135deg,
-      var(--sakura-primary) 0%,
-      #fd7fa9 50%,
-      var(--sakura-primary) 100%
-    );
-    padding: 5rem 0;
-    text-align: center;
-  }
-  .cta-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-  }
-  .cta-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: "Playfair Display", serif;
-  }
-
-  .cta-subtitle {
-    font-size: 1.2rem;
-    max-width: 600px;
-  }
-
-  .cta-main-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 36px;
-    background: var(--off-white);
-    color: var(--sakura-hover);
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 32px var(--sakura-hover);
-  }
-
-  .cta-main-button:hover {
-    transform: translateY(-4px);
-    transform: scale(1.1);
-  }
-
-  .cta-main-button svg {
-    transition: transform 0.3s ease;
-  }
-
-  .cta-main-button:hover svg {
-    transform: scale(1.3);
-  }
-
-  @media (max-width: 768px) {
-    .cta-section h2 {
-      font-size: 2.2rem;
-    }
-
-    .cta-subtitle {
-      font-size: 1rem;
-    }
-
-    .cta-main-button {
-      padding: 16px 28px;
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .cta-section {
-      padding: 3rem 0;
-    }
-
-    .cta-content h2 {
-      font-size: 1.8rem;
-    }
-
-    .cta-subtitle {
-      font-size: 0.9rem;
-    }
-
-    .cta-main-button {
-      padding: 8px 15px;
-      font-size: 0.8rem;
-    }
-
-    .cta-main-button svg {
-      height: 22px;
-      width: 22px;
-    }
-  }
-</style>
