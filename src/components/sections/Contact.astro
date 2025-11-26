@@ -60,7 +60,7 @@ import { Icon } from "astro-icon/components";
         <Icon class="text-sakura-primary size-8" name="mdi:phone" />
         <span>+51 947 620 202</span>
         <button
-          onclick="copiarTelefono2()"
+          onclick="navigator.clipboard.writeText('51947620202')"
           aria-label="Copiar número de teléfono"
           title="Copiar número de teléfono"
           class="p-2 border rounded-full border-sakura-primary cursor-pointer transition-all duration-300 hover:bg-sakura-hover/20"
