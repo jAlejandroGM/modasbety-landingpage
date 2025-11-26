@@ -1,141 +1,58 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const links = {
+  facebook: {
+    url: "https://www.facebook.com/ModasBetyConfecciones",
+    aria: "Abrir Facebook de Modas Bety",
+    icon: "mingcute:facebook-line",
+  },
+  instagram: {
+    url: "https://www.instagram.com/modasbety_",
+    aria: "Abrir Instagram de Modas Bety",
+    icon: "mdi:instagram",
+  },
+  whatsapp: {
+    url: "https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida",
+    aria: "Escribir a WhatsApp",
+    icon: "mdi:whatsapp",
+  },
+};
 ---
 
-<footer role="contentinfo">
-  <div class="contenedor">
-    <section class="footer-brand">
-      <p>
-        © <span id="current-year">2025</span> Modas Bety - Atelier de Moda y Confección
-        para Damas
-      </p>
-    </section>
-    <nav class="footer-social" aria-label="Enlaces a redes sociales">
-      <a
-        href="https://www.facebook.com/ModasBetyConfecciones"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Síguenos en Facebook"
-      >
-        <Icon name="mdi:facebook" class="w-10 h-10" />
-      </a>
-      <a
-        href="https://www.instagram.com/modasbety_"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Síguenos en Instagram"
-      >
-        <Icon name="mdi:instagram" class="w-10 h-10" />
-      </a>
-      <a
-        href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contáctanos por WhatsApp"
-      >
-        <Icon name="mdi:whatsapp" class="w-10 h-10" />
-      </a>
-    </nav>
-    <address class="dev-credits">
-      Desarrollado con ☕ por
-      <a
-        href="https://alguzdev.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="dev-link text-sakura-hover"
-        aria-label="Ver perfil de GitHub del desarrollador"
-        >Alejandro G. - alguzdev</a
-      >
-    </address>
-  </div>
+<footer class="flex flex-col items-center gap-4" role="contentinfo">
+  <p>
+    © <span id="current-year">2025</span> Modas Bety - Atelier de Moda y Confección
+    para Damas
+  </p>
+  <nav class="flex gap-2" aria-label="Enlaces a redes sociales">
+    {
+      Object.entries(links).map(([key, { url, aria, icon }]) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={aria}
+          class="text-2xl text-sakura-primary hover:text-sakura-hover hover:scale-110 transition-all duration-300"
+        >
+          <Icon name={icon} class="size-8" />
+        </a>
+      ))
+    }
+  </nav>
+  <address class="not-italic text-sm opacity-80">
+    Desarrollado con ☕ por
+    <a
+      href="https://alguzdev.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sakura-hover"
+      aria-label="Ver perfil de GitHub del desarrollador">alguzdev</a
+    >
+  </address>
 </footer>
 
 <script>
   import { initYearUpdater } from "../../scripts/components/year-updater.js";
   initYearUpdater();
 </script>
-
-<style>
-  footer .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-    padding-bottom: 1rem;
-  }
-
-  footer p {
-    font-size: 0.9rem;
-    color: #bdc3c7;
-  }
-
-  .dev-credits {
-    font-size: 0.8rem;
-    font-style: normal;
-    opacity: 0.7;
-  }
-
-  .dev-link {
-    color: var(--sakura-primary);
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  .dev-link:hover {
-    color: var(--sakura-hover);
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .footer-social a {
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    display: block;
-  }
-
-  .footer-social img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .footer-social a:hover {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    footer .contenedor {
-      gap: 0.7rem;
-    }
-    footer p {
-      font-size: 0.8rem;
-    }
-    .footer-social img {
-      width: 28px;
-      height: 28px;
-    }
-    .dev-credits {
-      font-size: 0.7rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    footer .contenedor {
-      gap: 0.5rem;
-    }
-    footer p {
-      font-size: 0.7rem;
-    }
-    .footer-social img {
-      width: 22px;
-      height: 22px;
-    }
-    .dev-credits {
-      font-size: 0.6rem;
-    }
-  }
-</style>
