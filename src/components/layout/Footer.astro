@@ -1,45 +1,13 @@
 ---
-import { Icon } from "astro-icon/components";
-
-const links = {
-  facebook: {
-    url: "https://www.facebook.com/ModasBetyConfecciones",
-    aria: "Abrir Facebook de Modas Bety",
-    icon: "mingcute:facebook-line",
-  },
-  instagram: {
-    url: "https://www.instagram.com/modasbety_",
-    aria: "Abrir Instagram de Modas Bety",
-    icon: "mdi:instagram",
-  },
-  whatsapp: {
-    url: "https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida",
-    aria: "Escribir a WhatsApp",
-    icon: "mdi:whatsapp",
-  },
-};
+import SocialNav from "../ui/SocialNav.astro";
 ---
 
-<footer class="flex flex-col items-center gap-4" role="contentinfo">
+<footer class="flex flex-col items-center gap-4 pb-16" role="contentinfo">
   <p>
     © <span id="current-year">2025</span> Modas Bety - Atelier de Moda y Confección
     para Damas
   </p>
-  <nav class="flex gap-2" aria-label="Enlaces a redes sociales">
-    {
-      Object.entries(links).map(([key, { url, aria, icon }]) => (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={aria}
-          class="text-2xl text-sakura-primary hover:text-sakura-hover hover:scale-110 transition-all duration-300"
-        >
-          <Icon name={icon} class="size-8" />
-        </a>
-      ))
-    }
-  </nav>
+  <SocialNav />
   <address class="not-italic text-sm opacity-80">
     Desarrollado con ☕ por
     <a

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import SocialNav from "../ui/SocialNav.astro";
 ---
 
 <section
@@ -10,18 +11,21 @@ import { Icon } from "astro-icon/components";
 >
   <h2>Encuéntranos</h2>
   <div class="flex gap-8 items-center w-11/12">
-    <iframe
+    <!-- <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.756513698254!2d-79.02167642241776!3d-8.12625418134591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad17790af131f7%3A0xc77d68ccfcf3cee2!2sModas%20Bety!5e0!3m2!1sen!2spe!4v1755303610052!5m2!1sen!2spe"
-      class="h-100 w-4/6 border-2 rounded-3xl border-sakura-primary shadow-[0_0_60px_rgba(255,192,203,0.5)]"
+      class="h-100 w-4/6 border-4 rounded-3xl border-sakura-primary shadow-[0_0_60px_rgba(255,192,203,0.5)]"
       allowfullscreen
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       aria-label="Mapa interactivo mostrando la ubicación de Modas Bety"
-    ></iframe>
+    ></iframe> -->
 
     <address class="flex flex-col gap-8 not-italic">
       <div class="flex gap-4 items-center">
-        <Icon class="text-sakura-primary size-8" name="mdi:store-marker" />
+        <Icon
+          class="text-sakura-primary size-12 border-2 border-sakura-primary rounded-full p-2"
+          name="mdi:store-marker"
+        />
         <div class="flex flex-col gap-2 w-3/4">
           <p>
             Calle José Dolores López 315, Urb. Santa María 5ta Etapa, Trujillo.
@@ -35,7 +39,10 @@ import { Icon } from "astro-icon/components";
       </div>
 
       <div class="flex gap-4 items-center">
-        <Icon class="text-sakura-primary size-8" name="mdi:directions" />
+        <Icon
+          class="text-sakura-primary size-12 border-2 border-sakura-primary rounded-full p-2"
+          name="mdi:directions"
+        />
 
         <a
           href="https://www.google.com/maps/dir/?api=1&destination=-8.12625418134591,-79.02167642241776"
@@ -49,7 +56,10 @@ import { Icon } from "astro-icon/components";
       </div>
 
       <div class="flex gap-4 items-center">
-        <Icon class="text-sakura-primary size-8" name="mdi:calendar-clock" />
+        <Icon
+          class="text-sakura-primary size-12 border-2 border-sakura-primary rounded-full p-2"
+          name="mdi:calendar-clock"
+        />
         <div class="flex flex-col">
           <p>Atención de Lunes a Sábado de:</p>
           <p>9:00 AM a 1:00 PM & 3:00 PM a 7:00 PM</p>
@@ -57,17 +67,47 @@ import { Icon } from "astro-icon/components";
       </div>
 
       <div class="flex gap-4 items-center">
-        <Icon class="text-sakura-primary size-8" name="mdi:phone" />
+        <Icon
+          class="text-sakura-primary size-12 border-2 border-sakura-primary rounded-full p-2"
+          name="mdi:phone"
+        />
         <span>+51 947 620 202</span>
-        <button
-          onclick="navigator.clipboard.writeText('51947620202')"
-          aria-label="Copiar número de teléfono"
-          title="Copiar número de teléfono"
-          class="p-2 border rounded-full border-sakura-primary cursor-pointer transition-all duration-300 hover:bg-sakura-hover/20"
-        >
-          <Icon class="text-sakura-primary size-6" name="mdi:content-copy" />
-        </button>
+        <div class="relative group">
+          <button
+            id="copy-btn"
+            aria-label="Copiar número de teléfono"
+            title="Copiar número de teléfono"
+            class="cursor-pointer transition-all duration-300 flex items-center"
+          >
+            <Icon
+              class="text-sakura-primary hover:text-sakura-hover/70 size-6"
+              name="mdi:content-copy"
+            />
+          </button>
+          <span
+            id="copy-tooltip"
+            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-sakura-primary rounded opacity-0 transition-opacity duration-300 pointer-events-none"
+          >
+            ¡Copiado!
+          </span>
+        </div>
       </div>
+      <SocialNav />
     </address>
   </div>
 </section>
+
+<script>
+  const copyBtn = document.getElementById("copy-btn");
+  const tooltip = document.getElementById("copy-tooltip");
+
+  if (copyBtn && tooltip) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("51947620202");
+      tooltip.classList.remove("opacity-0");
+      setTimeout(() => {
+        tooltip.classList.add("opacity-0");
+      }, 3000);
+    });
+  }
+</script>

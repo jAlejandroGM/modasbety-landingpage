@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "@iconify-json/mingcute": "^1.2.5",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
