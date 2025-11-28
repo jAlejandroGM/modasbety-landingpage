@@ -1,10 +1,12 @@
 ---
 import SocialNav from "../ui/SocialNav.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="flex flex-col items-center gap-4 pb-16" role="contentinfo">
   <p>
-    © <span id="current-year">2025</span> Modas Bety - Atelier de Moda y Confección
+    © <span id="year">{currentYear}</span> Modas Bety - Atelier de Moda y Confección
     para Damas
   </p>
   <SocialNav />
@@ -21,6 +23,8 @@ import SocialNav from "../ui/SocialNav.astro";
 </footer>
 
 <script>
-  import { initYearUpdater } from "../../scripts/components/year-updater.js";
-  initYearUpdater();
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear().toString();
+  }
 </script>

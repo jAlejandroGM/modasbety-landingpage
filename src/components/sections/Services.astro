@@ -65,10 +65,7 @@ const servicios = [
     <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <article
-            id="servicios-card"
-            class="surface-panel flex flex-col align-center text-center gap-4 flex-none w-xs h-auto py-12 px-8 mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]"
-          >
+          <article class="service-card surface-panel flex flex-col align-center text-center gap-4 flex-none w-xs h-auto py-12 px-8 mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
             <span class="text-5xl">{servicio.icon}</span>
             <h3 class="font-text text-xl font-bold">{servicio.titulo}</h3>
             <p class="leading-7 text-gray-300">{servicio.descripcion}</p>
@@ -102,8 +99,17 @@ const servicios = [
 </section>
 
 <script>
-  import { initSlider } from "../../scripts/components/slider.js";
-  initSlider();
+  const grid = document.getElementById("servicios-grid");
+
+  if (grid) {
+    const cards = grid.querySelectorAll(".service-card");
+
+    cards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      (clone as HTMLElement).setAttribute("aria-hidden", "true");
+      grid.appendChild(clone);
+    });
+  }
 </script>
 
 <style>
