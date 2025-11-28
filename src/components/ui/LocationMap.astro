@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import mapPreview from "../../assets/map-preview.png";
+
+const mapUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.756513698254!2d-79.02167642241776!3d-8.12625418134591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad17790af131f7%3A0xc77d68ccfcf3cee2!2sModas%20Bety!5e0!3m2!1sen!2spe!4v1755303610052!5m2!1sen!2spe";
+---
+
+<div
+  class="relative h-100 w-4/6 border-4 rounded-3xl border-sakura-primary shadow-[0_0_60px_rgba(255,192,203,0.5)] overflow-hidden group bg-neutral-900"
+>
+  <div
+    id="map-facade"
+    class="absolute inset-0 z-10 flex flex-col items-center justify-center transition-opacity duration-500"
+  >
+    <Image
+      src={mapPreview}
+      alt="Vista previa del mapa de ubicación"
+      class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+    />
+
+    <div class="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
+
+    <button
+      id="load-map-btn"
+      class="relative z-20 flex items-center gap-2 px-6 py-3 bg-sakura-primary/90 text-black font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
+      aria-label="Cargar mapa interactivo de Google Maps"
+    >
+      <Icon name="mdi:map-marker-radius" class="size-6" />
+      <span>Ver Mapa Interactivo</span>
+    </button>
+  </div>
+
+  <div id="map-container" class="w-full h-full" data-url={mapUrl}></div>
+</div>
+
+<script>
+  const loadBtn = document.getElementById("load-map-btn");
+  const facade = document.getElementById("map-facade");
+  const container = document.getElementById("map-container");
+
+  if (loadBtn && facade && container) {
+    loadBtn.addEventListener("click", () => {
+      const url = container.dataset.url;
+
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", url || "");
+      iframe.setAttribute("width", "100%");
+      iframe.setAttribute("height", "100%");
+      iframe.setAttribute("style", "border:0;");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("loading", "lazy");
+      iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+      iframe.setAttribute("title", "Ubicación de Modas Bety en Google Maps");
+
+      container.appendChild(iframe);
+
+      facade.style.opacity = "0";
+      setTimeout(() => {
+        facade.style.display = "none";
+      }, 500);
+    });
+  }
+</script>
