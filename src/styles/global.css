@@ -58,7 +58,7 @@ h2 {
 }
 
 .logo {
-  @apply w-full h-full block object-cover object-center transition-transform duration-300 hover:scale-110;
+  @apply w-full h-full block object-cover object-center transition-transform duration-800 hover:scale-110;
   filter: drop-shadow(0 8px 16px rgba(232, 180, 184, 0.4));
   animation: breathe 6s ease-in-out infinite;
   user-select: none;
