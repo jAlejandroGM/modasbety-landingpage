@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 ---
 
 <section
@@ -13,12 +14,12 @@ import { Icon } from "astro-icon/components";
   </p>
   <a
     class="inline-flex items-center gap-3 px-8 py-4 bg-neutral-200 text-rose-300 rounded-full hover:-translate-y-1 hover:scale-110 transition-all duration-300 shadow-lg shadow-sakura-hover/70 font-medium text-lg"
-    href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
+    href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappDefault)}
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Obtener cotización gratuita por WhatsApp"
   >
-    Agenda tu cotización gratuita ahora
+    ¡Haz realidad tu diseño hoy!
     <Icon name="mdi:whatsapp" class="size-8" />
   </a>
 </section>

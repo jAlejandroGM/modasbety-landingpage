@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import SocialNav from "../../ui/SocialNav.astro";
 import LocationMap from "./LocationMap.astro";
+import { CONTACT_INFO } from "../../../data/siteData";
 ---
 
 <section id="ubicacion" class="flex flex-col items-center gap-12" role="region">
@@ -17,12 +18,13 @@ import LocationMap from "./LocationMap.astro";
         />
         <div class="flex flex-col gap-2 w-3/4">
           <p>
-            Calle José Dolores López 315, Urb. Santa María 5ta Etapa, Trujillo.
+            {CONTACT_INFO.address.street}, {CONTACT_INFO.address.urbanization}, {
+              CONTACT_INFO.address.city
+            }.
           </p>
 
           <p>
-            A la altura de la Empresa de Transporte America Express y el Patio
-            de Llaves de Hidrandina.
+            {CONTACT_INFO.address.reference}
           </p>
         </div>
       </div>
@@ -34,7 +36,7 @@ import LocationMap from "./LocationMap.astro";
         />
 
         <a
-          href="https://www.google.com/maps/dir/?api=1&destination=-8.12625418134591,-79.02167642241776"
+          href={CONTACT_INFO.mapDirectionsUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Cómo llegar a Modas Bety"
@@ -50,8 +52,10 @@ import LocationMap from "./LocationMap.astro";
           name="mdi:calendar-clock"
         />
         <div class="flex flex-col">
-          <p>Atención de Lunes a Sábado de:</p>
-          <p>9:00 AM a 1:00 PM & 3:00 PM a 7:00 PM</p>
+          <p>Atención de {CONTACT_INFO.schedule.days} de:</p>
+          <p>
+            {CONTACT_INFO.schedule.morning} & {CONTACT_INFO.schedule.afternoon}
+          </p>
         </div>
       </div>
 
@@ -60,7 +64,7 @@ import LocationMap from "./LocationMap.astro";
           class="text-sakura-primary size-12 border-2 border-sakura-primary rounded-full p-2"
           name="mdi:phone"
         />
-        <span>+51 947 620 202</span>
+        <span>{CONTACT_INFO.phonePretty}</span>
         <div class="relative group">
           <button
             id="copy-btn"
@@ -75,7 +79,7 @@ import LocationMap from "./LocationMap.astro";
           </button>
           <span
             id="copy-tooltip"
-            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-sakura-primary rounded opacity-0 transition-opacity duration-300 pointer-events-none"
+            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-black bg-sakura-primary rounded opacity-0 transition-opacity duration-300 pointer-events-none"
           >
             ¡Copiado!
           </span>
@@ -86,13 +90,13 @@ import LocationMap from "./LocationMap.astro";
   </div>
 </section>
 
-<script>
+<script define:vars={{ whatsappNumber: CONTACT_INFO.whatsappNumber }}>
   const copyBtn = document.getElementById("copy-btn");
   const tooltip = document.getElementById("copy-tooltip");
 
   if (copyBtn && tooltip) {
     copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText("51947620202");
+      navigator.clipboard.writeText(whatsappNumber);
       tooltip.classList.remove("opacity-0");
       setTimeout(() => {
         tooltip.classList.add("opacity-0");

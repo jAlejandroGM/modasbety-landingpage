@@ -1,23 +1,25 @@
 ---
 import SocialNav from "../ui/SocialNav.astro";
+import { SITE_INFO } from "../../data/siteData";
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="flex flex-col items-center gap-4 pb-16" role="contentinfo">
   <p>
-    © <span id="year">{currentYear}</span> Modas Bety - Atelier de Moda y Confección
-    para Damas
+    © <span id="year">{currentYear}</span>
+    {SITE_INFO.name} - Atelier de Moda y Confección para Damas
   </p>
   <SocialNav />
   <address class="not-italic text-sm opacity-80">
     Desarrollado con ☕ por
     <a
-      href="https://alguzdev.vercel.app/"
+      href={SITE_INFO.author.url}
       target="_blank"
       rel="noopener noreferrer"
       class="text-sakura-hover"
-      aria-label="Ver perfil de GitHub del desarrollador">alguzdev</a
+      aria-label="Ver perfil de GitHub del desarrollador"
+      >{SITE_INFO.author.name}</a
     >
   </address>
 </footer>

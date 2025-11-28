@@ -3,16 +3,15 @@ import SakuraCanvas from "../components/layout/SakuraCanvas.astro";
 import "../styles/global.css";
 import "@fontsource/playfair-display";
 import "@fontsource/inter";
+import { SITE_INFO, CONTACT_INFO, SOCIAL_LINKS } from "../data/siteData";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = "Modas Bety - Alta costura con identidad",
-  description = "Taller de alta costura y confección a medida para damas en Trujillo, Perú. Elegancia, estilo y calidad en cada prenda.",
-} = Astro.props;
+const { title = SITE_INFO.title, description = SITE_INFO.description } =
+  Astro.props;
 
 const canonicalURL = new URL(
   Astro.url.pathname,
@@ -22,23 +21,22 @@ const canonicalURL = new URL(
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.modasbety.com/#business",
-  name: "Modas Bety",
-  description:
-    "Taller de alta costura y confección a medida para damas en Trujillo, Perú. Elegancia, estilo y calidad en cada prenda.",
-  telephone: "+51947620202",
+  "@id": `${SITE_INFO.url}/#business`,
+  name: SITE_INFO.name,
+  description: description,
+  telephone: `+${CONTACT_INFO.whatsappNumber}`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Dolores Lopez 315",
-    addressLocality: "Trujillo",
-    addressRegion: "La Libertad",
-    postalCode: "13007",
-    addressCountry: "PE",
+    streetAddress: CONTACT_INFO.address.street,
+    addressLocality: CONTACT_INFO.address.city,
+    addressRegion: CONTACT_INFO.address.region,
+    postalCode: CONTACT_INFO.address.postalCode,
+    addressCountry: CONTACT_INFO.address.country,
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: -8.126061498911337,
-    longitude: -79.01910812883628,
+    latitude: CONTACT_INFO.coordinates.lat,
+    longitude: CONTACT_INFO.coordinates.lng,
   },
   openingHoursSpecification: [
     {
@@ -68,10 +66,7 @@ const structuredData = {
       closes: "20:00",
     },
   ],
-  sameAs: [
-    "https://www.facebook.com/ModasBetyConfecciones/",
-    "https://www.instagram.com/modasbety_",
-  ],
+  sameAs: [SOCIAL_LINKS.facebook, SOCIAL_LINKS.instagram],
 };
 ---
 
@@ -85,7 +80,7 @@ const structuredData = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="alta costura, confección, medida, damas, moda, Trujillo, Perú, Modas Bety"
+      content={`alta costura, confección, medida, damas, moda, ${CONTACT_INFO.address.city}, ${CONTACT_INFO.address.country}, ${SITE_INFO.name}`}
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
@@ -101,7 +96,7 @@ const structuredData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Modas Bety" />
+    <meta name="apple-mobile-web-app-title" content={SITE_INFO.name} />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Structured Data (JSON-LD) -->

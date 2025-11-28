@@ -1,19 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
+import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 
 const links = {
   facebook: {
-    url: "https://www.facebook.com/ModasBetyConfecciones",
+    url: SOCIAL_LINKS.facebook,
     aria: "Abrir Facebook de Modas Bety",
     icon: "mingcute:facebook-line",
   },
   instagram: {
-    url: "https://www.instagram.com/modasbety_",
+    url: SOCIAL_LINKS.instagram,
     aria: "Abrir Instagram de Modas Bety",
     icon: "mdi:instagram",
   },
   whatsapp: {
-    url: "https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida",
+    url: SOCIAL_LINKS.whatsapp(MESSAGES.whatsappDefault),
     aria: "Escribir a WhatsApp",
     icon: "mdi:whatsapp",
   },

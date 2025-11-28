@@ -1,9 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
+import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 ---
 
 <a
-  href="https://wa.me/51947620202?text=¡Hola!%20Vengo%20de%20su%20página%20web%20y%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios%20de%20confección%20a%20medida"
+  href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappDefault)}
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Solicitar cotización por WhatsApp - Abre en una nueva ventana"
@@ -13,7 +14,7 @@ import { Icon } from "astro-icon/components";
     class="absolute inset-0 rounded-full bg-whatsapp/80 transform -translate-x-full transition-transform duration-700 group-hover:translate-x-0 -z-10"
     aria-hidden="true"></span>
 
-  Solicita tu cotización
+  Cotiza tu vestido soñado
   <Icon
     name="mdi:whatsapp"
     class="h-8 w-8 text-current transition-all duration-300"

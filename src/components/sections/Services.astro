@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 
 const servicios = [
   {
@@ -82,13 +83,13 @@ const servicios = [
       ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin costo.
     </p>
     <a
-      href="https://wa.me/51947620202?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20confección.%20¿Podrían%20proporcionarme%20información%20detallada?"
+      href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappCta)}
       target="_blank"
       class="wsp-btn self-center flex"
       rel="noopener noreferrer"
       aria-label="Solicitar información detallada por WhatsApp"
     >
-      Agenda tu asesoría
+      Recibe asesoría personalizada
       <Icon
         name="mdi:whatsapp"
         class="h-8 w-8 text-inherit"
