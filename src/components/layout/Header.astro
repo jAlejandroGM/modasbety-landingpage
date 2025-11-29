@@ -1,6 +1,6 @@
 <header role="banner">
   <nav
-    class="py-3 md:py-4 px-4 w-full max-w-7xl mx-auto"
+    class="py-3 md:py-4 px-4 w-full mx-auto"
     role="navigation"
     aria-label="Menú principal"
   >
@@ -31,3 +31,35 @@
     </ul>
   </nav>
 </header>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const anchors = document.querySelectorAll('.nav-anchor[href^="#"]');
+    anchors.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest",
+        });
+
+        history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.search
+        );
+
+        const hadTabindex = target.hasAttribute("tabindex");
+        if (!hadTabindex) target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        if (!hadTabindex) target.removeAttribute("tabindex");
+      });
+    });
+  });
+</script>
