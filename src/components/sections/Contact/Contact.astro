@@ -11,28 +11,23 @@ import { CONTACT_INFO } from "../../../data/siteData";
   role="region"
 >
   <h2>Encuéntranos</h2>
-  <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start w-full">
+  <div
+    class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 items-start w-full"
+  >
     <LocationMap />
 
     <address
-      class="flex flex-col gap-4 lg:gap-6 xl:gap-8 text-sm xl:text-base not-italic w-full xl:w-3/7"
+      class="flex flex-col gap-6 xl:gap-8 text-sm xl:text-base not-italic w-full xl:w-3/7"
     >
       <div class="flex gap-4 items-center">
         <Icon
           class="text-sakura-primary size-10 lg:size-12 border-2 border-sakura-primary rounded-full p-2 shrink-0"
           name="mdi:store-marker"
         />
-        <div class="flex flex-col gap-2 w-full text-balance">
-          <p>
-            {CONTACT_INFO.address.street}, {CONTACT_INFO.address.urbanization}, {
-              CONTACT_INFO.address.city
-            }.
-          </p>
-
-          <p>
-            {CONTACT_INFO.address.reference}
-          </p>
-        </div>
+        <p>
+          {CONTACT_INFO.address.street}, <br />
+          {CONTACT_INFO.address.urbanization}, {CONTACT_INFO.address.city}.
+        </p>
       </div>
 
       <div class="flex gap-4 items-center">
@@ -91,7 +86,7 @@ import { CONTACT_INFO } from "../../../data/siteData";
           </span>
         </div>
       </div>
-      <SocialNav />
+      <SocialNav class="mt-4" />
     </address>
   </div>
 </section>

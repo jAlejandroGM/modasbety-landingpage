@@ -21,8 +21,6 @@ export const CONTACT_INFO = {
     region: "La Libertad",
     country: "PE",
     postalCode: "13007",
-    reference:
-      "A la altura de la Empresa de Transporte America Express y el Patio de Llaves de Hidrandina.",
   },
   coordinates: {
     lat: -8.12625418134591,
