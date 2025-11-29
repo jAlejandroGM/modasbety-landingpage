@@ -4,8 +4,8 @@
   --color-sakura-primary: rgb(255, 192, 203);
   --color-sakura-hover: rgb(255, 179, 186);
   --color-whatsapp: rgb(34, 197, 94);
-  --font-text: "Lato", system-ui, -apple-system, sans-serif;
-  --font-subs: "Playfair Display", serif;
+  --font-text: "Raleway", system-ui, -apple-system, sans-serif;
+  --font-subs: "Bodoni Moda", serif;
 }
 
 @layer base {

@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/lato": "^5.2.7",
-    "@fontsource/playfair-display": "^5.2.8",
+    "@fontsource/bodoni-moda": "^5.2.7",
+    "@fontsource/raleway": "^5.2.8",
     "@iconify-json/mingcute": "^1.2.5",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.1",
