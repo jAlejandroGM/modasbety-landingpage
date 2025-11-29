@@ -168,22 +168,7 @@ const servicios = [
 
   #servicios-grid {
     animation: scroll 40s linear infinite;
-    /* Mobile: w-64 (16rem) + mr-4 (1rem) */
-    width: calc((16rem + 1rem) * 7);
-  }
-
-  @media (min-width: 640px) {
-    #servicios-grid {
-      /* SM: w-72 (18rem) + mr-8 (2rem) */
-      width: calc((18rem + 2rem) * 7);
-    }
-  }
-
-  @media (min-width: 768px) {
-    #servicios-grid {
-      /* MD: w-80 (20rem) + mr-8 (2rem) */
-      width: calc((20rem + 2rem) * 7);
-    }
+    width: max-content;
   }
 
   @keyframes scroll {
@@ -191,7 +176,7 @@ const servicios = [
       transform: translateX(0);
     }
     to {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
 </style>
