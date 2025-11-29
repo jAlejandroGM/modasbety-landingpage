@@ -28,7 +28,7 @@ export const CONTACT_INFO = {
   },
   schedule: {
     days: "Lunes a Sábado",
-    morning: "9:00 AM a 1:00 PM",
+    morning: "9:00 AM a 12:00 PM",
     afternoon: "3:00 PM a 8:00 PM",
   },
   mapEmbedUrl:

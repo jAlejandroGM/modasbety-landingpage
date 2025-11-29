@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  img: ImageMetadata;
+  index: number;
+}
+
+const { img, index } = Astro.props;
+---
+
+<div
+  class="gallery-item group relative overflow-hidden rounded-sm cursor-zoom-in aspect-3/4 lightbox-trigger"
+  data-src={img.src}
+>
+  <Image
+    src={img}
+    alt={`Diseño exclusivo ${index + 1}`}
+    width={350}
+    quality="mid"
+    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+    loading={index < 10 ? "eager" : "lazy"}
+  />
+
+  <div
+    class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+  >
+    <span
+      class="text-xs tracking-wide border border-sakura-primary px-3 py-1 bg-black/20 backdrop-blur-[2px]"
+    >
+      Ver
+    </span>
+  </div>
+</div>
