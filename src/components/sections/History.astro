@@ -1,19 +1,38 @@
 <section
   id="historia"
-  class="historia"
+  class="w-full px-4"
   role="region"
   aria-labelledby="historia-titulo"
 >
-  <div class="contenedor">
-    <div class="historia-content">
-      <div class="historia-text">
-        <h2 id="historia-titulo">Nuestra Historia</h2>
-        <div class="historia-timeline">
-          <div class="timeline-item">
-            <div class="timeline-year">2010</div>
-            <div class="timeline-content">
-              <h3>Los Inicios</h3>
-              <p>
+  <div class="contenedor mx-auto max-w-6xl">
+    <div
+      class="flex flex-col lg:grid lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start"
+    >
+      <div class="w-full">
+        <h2
+          id="historia-titulo"
+          class="text-3xl md:text-4xl mb-8 text-gray-50 font-serif"
+        >
+          Nuestra Historia
+        </h2>
+        <div class="relative">
+          {/* Vertical Line */}
+          <div
+            class="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-sakura-primary"
+          >
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row gap-4 relative pl-16 md:pl-24 mb-10"
+          >
+            <div
+              class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-sakura-primary text-neutral-900 rounded-full flex items-center justify-center font-bold text-sm md:text-base z-10"
+            >
+              2010
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-gray-50">Los Inicios</h3>
+              <p class="text-gray-300 leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation.
@@ -21,11 +40,19 @@
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-year">2015</div>
-            <div class="timeline-content">
-              <h3>Crecimiento y Especialización</h3>
-              <p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 relative pl-16 md:pl-24 mb-10"
+          >
+            <div
+              class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-sakura-primary text-neutral-900 rounded-full flex items-center justify-center font-bold text-sm md:text-base z-10"
+            >
+              2015
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-gray-50">
+                Crecimiento y Especialización
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
                 aute irure dolor in reprehenderit in voluptate velit esse cillum
                 dolore eu fugiat nulla pariatur.
@@ -33,11 +60,19 @@
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-year">2020</div>
-            <div class="timeline-content">
-              <h3>Expansión Digital</h3>
-              <p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 relative pl-16 md:pl-24 mb-10"
+          >
+            <div
+              class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-sakura-primary text-neutral-900 rounded-full flex items-center justify-center font-bold text-sm md:text-base z-10"
+            >
+              2020
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-gray-50">
+                Expansión Digital
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa
                 qui officia deserunt mollit anim.
@@ -45,11 +80,19 @@
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-year">2025</div>
-            <div class="timeline-content">
-              <h3>Presente - Alta Costura con Identidad</h3>
-              <p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 relative pl-16 md:pl-24 mb-10"
+          >
+            <div
+              class="absolute left-0 w-12 h-12 md:w-16 md:h-16 bg-sakura-primary text-neutral-900 rounded-full flex items-center justify-center font-bold text-sm md:text-base z-10"
+            >
+              2025
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 text-gray-50">
+                Presente - Alta Costura con Identidad
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
                 perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque laudantium.
@@ -59,147 +102,36 @@
         </div>
       </div>
 
-      <div class="historia-visual">
-        <div class="historia-highlight surface-panel">
-          <h3>15+ años</h3>
-          <p>de experiencia en alta costura</p>
+      <div
+        class="flex overflow-x-auto gap-4 lg:flex-col lg:overflow-visible w-full order-first lg:order-last pb-4 lg:pb-0"
+      >
+        <div
+          class="surface-panel min-w-[150px] lg:min-w-0 shrink-0 bg-white/5 backdrop-blur-md p-6 rounded-xl text-center border-l-4 border-l-pink-300 border-t border-r border-b border-sakura-primary"
+        >
+          <h3 class="text-2xl md:text-3xl text-sakura-primary mb-2 font-bold">
+            15+ años
+          </h3>
+          <p class="text-gray-300 font-medium">
+            de experiencia en alta costura
+          </p>
         </div>
-        <div class="historia-highlight surface-panel">
-          <h3>500+</h3>
-          <p>clientas satisfechas</p>
+        <div
+          class="surface-panel min-w-[150px] lg:min-w-0 shrink-0 bg-white/5 backdrop-blur-md p-6 rounded-xl text-center border-l-4 border-l-pink-300 border-t border-r border-b border-sakura-primary"
+        >
+          <h3 class="text-2xl md:text-3xl text-sakura-primary mb-2 font-bold">
+            500+
+          </h3>
+          <p class="text-gray-300 font-medium">clientas satisfechas</p>
         </div>
-        <div class="historia-highlight surface-panel">
-          <h3>100%</h3>
-          <p>confección a medida</p>
+        <div
+          class="surface-panel min-w-[150px] lg:min-w-0 shrink-0 bg-white/5 backdrop-blur-md p-6 rounded-xl text-center border-l-4 border-l-pink-300 border-t border-r border-b border-sakura-primary"
+        >
+          <h3 class="text-2xl md:text-3xl text-sakura-primary mb-2 font-bold">
+            100%
+          </h3>
+          <p class="text-gray-300 font-medium">confección a medida</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .historia-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .historia h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #f8f9fa;
-    font-family: "Playfair Display", serif;
-  }
-
-  .historia-timeline {
-    position: relative;
-  }
-
-  .historia-timeline::before {
-    content: "";
-    position: absolute;
-    left: 2rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--sakura-primary);
-  }
-
-  .timeline-item {
-    display: flex;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-
-  .timeline-year {
-    width: 4rem;
-    height: 4rem;
-    background: var(--sakura-primary);
-    color: var(--dark-text);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-right: 2rem;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #f8f9fa;
-  }
-
-  .timeline-content p {
-    color: #bdc3c7;
-    line-height: 1.6;
-  }
-
-  .historia-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .historia-highlight {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
-    border-left: 4px solid #ffc0cb;
-    border-top: 1px solid var(--sakura-primary);
-    border-right: 1px solid var(--sakura-primary);
-    border-bottom: 1px solid var(--sakura-primary);
-  }
-
-  .historia-highlight h3 {
-    font-size: 2rem;
-    color: var(--sakura-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .historia-highlight p {
-    color: #bdc3c7;
-    font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .historia h2 {
-      font-size: 2rem;
-    }
-
-    .historia-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .historia-timeline::before {
-      left: 1.5rem;
-    }
-
-    .timeline-year {
-      width: 3rem;
-      height: 3rem;
-      margin-right: 1.5rem;
-      font-size: 0.8rem;
-    }
-
-    .historia-visual {
-      order: -1;
-      flex-direction: row;
-      overflow-x: auto;
-      gap: 1rem;
-    }
-
-    .historia-highlight {
-      min-width: 150px;
-      flex-shrink: 0;
-    }
-  }
-</style>

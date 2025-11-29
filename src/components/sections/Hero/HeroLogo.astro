@@ -3,12 +3,12 @@ import { Image } from "astro:assets";
 import logoImg from "../../../assets/ModasBety-logo.png";
 ---
 
-<div class="w-full max-w-153 h-80">
+<div class="w-full max-w-100 lg:max-w-153 h-60 lg:h-80">
   <Image
     src={logoImg}
     alt="Modas Bety - Taller de alta costura"
     widths={[350, 500, 720]}
-    sizes="(max-width: 640px) 350px, (max-width: 1024px) 500px, 720px"
+    sizes="(max-width: 768px) 350px,  (max-width: 1024px) 600px, 720px"
     loading="eager"
     class="logo object-contain w-full h-full"
   />

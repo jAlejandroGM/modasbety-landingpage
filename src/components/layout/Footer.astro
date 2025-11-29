@@ -5,13 +5,16 @@ import { SITE_INFO } from "../../data/siteData";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="flex flex-col items-center gap-4 pb-8" role="contentinfo">
-  <p>
+<footer
+  class="flex flex-col items-center gap-4 pb-8 px-4 text-center"
+  role="contentinfo"
+>
+  <p class="text-sm md:text-base">
     © <span id="year">{currentYear}</span>
     {SITE_INFO.name} - Atelier de Moda y Confección para Damas
   </p>
   <SocialNav />
-  <address class="not-italic text-sm opacity-80 mt-8">
+  <address class="not-italic text-xs md:text-sm opacity-80 mt-4 md:mt-8">
     Desarrollado con ☕ por
     <a
       href={SITE_INFO.author.url}

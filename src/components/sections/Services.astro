@@ -45,12 +45,11 @@ const servicios = [
       "Blusas, pantalones y prendas del día a día con acabados de alta costura.",
   },
 ];
-
 ---
 
 <section
   id="especialidades"
-  class="flex flex-col items-center gap-12"
+  class="flex flex-col items-center gap-8 md:gap-12"
   aria-labelledby="especialidades-titulo"
 >
   <div>
@@ -58,7 +57,9 @@ const servicios = [
       Tu Estilo,<br />
       Nuestra Especialidad
     </h2>
-    <p class="text-center text-xl text-gray-300 max-w-xl m-auto">
+    <p
+      class="text-center text-sm md:text-xl text-balance text-gray-300 max-w-xl m-auto"
+    >
       Creamos prendas únicas para cada ocasión especial de tu vida
     </p>
   </div>
@@ -67,10 +68,14 @@ const servicios = [
     <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <article class="service-card surface-panel flex flex-col align-center text-center gap-4 flex-none w-xs h-auto py-12 px-8 mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
-            <span class="text-5xl">{servicio.icon}</span>
-            <h3 class="font-text text-xl font-bold">{servicio.titulo}</h3>
-            <p class="leading-7 text-gray-300">{servicio.descripcion}</p>
+          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 md:gap-4 flex-none w-64 sm:w-72 md:w-80 h-auto p-6 md:py-12 md:px-8 mr-4 md:mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
+            <span class="text-3xl md:text-5xl">{servicio.icon}</span>
+            <h3 class="font-text text-base md:text-xl font-bold">
+              {servicio.titulo}
+            </h3>
+            <p class="text-sm md:text-base leading-relaxed text-gray-300">
+              {servicio.descripcion}
+            </p>
           </article>
         ))
       }
@@ -78,22 +83,24 @@ const servicios = [
   </div>
 
   <aside
-    class="flex flex-col gap-4 p-8 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)]"
+    class="flex flex-col items-center gap-6 p-6 md:p-10 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)] w-11/12 md:w-5/6 max-w-3xl mx-auto backdrop-blur-sm"
   >
-    <p class="text-xl font-medium text-sakura-primary">
+    <p
+      class="text-base md:text-2xl font-medium text-sakura-primary text-center text-balance"
+    >
       ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin costo.
     </p>
     <a
       href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappCta)}
       target="_blank"
-      class="wsp-btn self-center flex"
+      class="wsp-btn flex items-center gap-2 text-sm md:text-lg"
       rel="noopener noreferrer"
       aria-label="Solicitar información detallada por WhatsApp"
     >
       Conversemos sobre tu idea
       <Icon
         name="mdi:whatsapp"
-        class="h-8 w-8 text-inherit"
+        class="h-6 w-6 md:h-8 md:w-8 text-inherit"
         aria-hidden="true"
       />
     </a>
@@ -159,7 +166,22 @@ const servicios = [
 
   #servicios-grid {
     animation: scroll 40s linear infinite;
-    width: calc((320px + 2rem) * 7);
+    /* Mobile: w-64 (16rem) + mr-4 (1rem) */
+    width: calc((16rem + 1rem) * 7);
+  }
+
+  @media (min-width: 640px) {
+    #servicios-grid {
+      /* SM: w-72 (18rem) + mr-8 (2rem) */
+      width: calc((18rem + 2rem) * 7);
+    }
+  }
+
+  @media (min-width: 768px) {
+    #servicios-grid {
+      /* MD: w-80 (20rem) + mr-8 (2rem) */
+      width: calc((20rem + 2rem) * 7);
+    }
   }
 
   @keyframes scroll {

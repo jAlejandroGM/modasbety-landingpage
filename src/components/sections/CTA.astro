@@ -4,16 +4,18 @@ import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 ---
 
 <section
-  class="flex flex-col gap-12 w-full items-center bg-linear-to-br from-sakura-primary via-[#fd7fa9] to-sakura-primary py-22"
+  class="flex flex-col gap-6 md:gap-12 w-full items-center bg-linear-to-br from-sakura-primary via-[#fd7fa9] to-sakura-primary py-12 md:py-22 px-4 text-center"
 >
-  <h3 class="font-bold text-5xl font-subs">
+  <h3
+    class="font-bold text-2xl md:text-4xl lg:text-5xl font-subs tracking-wider text-balance"
+  >
     ¿Lista para hacer realidad tu diseño soñado?
   </h3>
-  <p class="text-xl">
+  <p class="md:text-xl">
     Agenda tu asesoría personalizada y recibe tu cotización sin compromiso.
   </p>
   <a
-    class="inline-flex items-center gap-3 px-8 py-4 bg-neutral-200 text-rose-300 rounded-full hover:-translate-y-1 hover:scale-110 transition-all duration-300 shadow-lg shadow-sakura-hover/70 font-medium text-lg"
+    class="inline-flex items-center justify-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-neutral-200 text-rose-300 rounded-full hover:-translate-y-1 hover:scale-110 transition-all duration-300 shadow-lg shadow-sakura-hover/70 font-medium md:text-lg w-auto"
     href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappDefault)}
     target="_blank"
     rel="noopener noreferrer"
