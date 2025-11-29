@@ -49,16 +49,16 @@ const servicios = [
 
 <section
   id="especialidades"
-  class="flex flex-col items-center gap-8 md:gap-12"
+  class="flex flex-col items-center gap-8 lg:gap-12"
   aria-labelledby="especialidades-titulo"
 >
-  <div>
+  <div class="space-y-2">
     <h2>
       Tu Estilo,<br />
       Nuestra Especialidad
     </h2>
     <p
-      class="text-center text-sm md:text-xl text-balance text-gray-300 max-w-xl m-auto"
+      class="text-center text-sm md:text-base lg:text-xl text-balance text-gray-300 max-w-xl m-auto"
     >
       Creamos prendas únicas para cada ocasión especial de tu vida
     </p>
@@ -68,12 +68,14 @@ const servicios = [
     <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 md:gap-4 flex-none w-64 sm:w-72 md:w-80 h-auto p-6 md:py-12 md:px-8 mr-4 md:mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
-            <span class="text-3xl md:text-5xl">{servicio.icon}</span>
-            <h3 class="font-text text-base md:text-xl font-bold">
+          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72  h-auto p-6 md:py-8  mr-4 md:mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
+            <span class="text-3xl md:text-4xl lg:text-5xl">
+              {servicio.icon}
+            </span>
+            <h3 class="font-text text-base md:text-lg lg:text-xl font-bold">
               {servicio.titulo}
             </h3>
-            <p class="text-sm md:text-base leading-relaxed text-gray-300">
+            <p class="text-sm lg:text-base leading-relaxed text-gray-300">
               {servicio.descripcion}
             </p>
           </article>
@@ -83,17 +85,17 @@ const servicios = [
   </div>
 
   <aside
-    class="flex flex-col items-center gap-6 p-6 md:p-10 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)] w-11/12 md:w-5/6 max-w-3xl mx-auto backdrop-blur-sm"
+    class="flex flex-col items-center gap-6 p-6 lg:p-10 border border-sakura-primary rounded-2xl shadow-[0_0_60px_rgba(255,192,203,0.2)] w-11/12 md:w-4/6 max-w-2xl mx-auto backdrop-blur-sm"
   >
     <p
-      class="text-base md:text-2xl font-medium text-sakura-primary text-center text-balance"
+      class="text-base md:text-lg lg:text-2xl font-medium text-sakura-primary text-center text-balance"
     >
       ¿Lista para tu prenda soñada? Recibe una asesoría personalizada sin costo.
     </p>
     <a
       href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappCta)}
       target="_blank"
-      class="wsp-btn flex items-center gap-2 text-sm md:text-lg"
+      class="wsp-btn flex items-center gap-2 text-sm md:text-base lg:text-lg"
       rel="noopener noreferrer"
       aria-label="Solicitar información detallada por WhatsApp"
     >
