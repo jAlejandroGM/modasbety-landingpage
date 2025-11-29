@@ -79,13 +79,15 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
     });
 
     btnLess.addEventListener("click", () => {
+      // 1. Forzamos el scroll al inicio de la galería INMEDIATAMENTE.
+      document
+        .getElementById("galeria")
+        ?.scrollIntoView({ behavior: "instant", block: "start" });
+
+      // 2. Colapsamos la grilla
       grid.classList.remove("is-expanded");
       btnMore.classList.remove("hidden");
       btnLess.classList.add("hidden");
-      // Scroll suave hacia arriba
-      document
-        .getElementById("galeria")
-        ?.scrollIntoView({ behavior: "smooth" });
     });
   }
 </script>
