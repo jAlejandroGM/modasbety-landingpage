@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
 
+const { class: className = "" } = Astro.props;
+
 const links = {
   facebook: {
     url: SOCIAL_LINKS.facebook,
@@ -21,7 +23,10 @@ const links = {
 };
 ---
 
-<nav class="flex gap-4 mx-auto" aria-label="Enlaces a redes sociales">
+<nav
+  class={`flex gap-4 mx-auto ${className}`}
+  aria-label="Enlaces a redes sociales"
+>
   {
     Object.entries(links).map(([key, { url, aria, icon }]) => (
       <a
@@ -31,7 +36,7 @@ const links = {
         aria-label={aria}
         class="text-2xl text-sakura-primary hover:text-sakura-hover/80 hover:scale-120 transition-all duration-300 "
       >
-        <Icon name={icon} class="size-8 md:size-10" />
+        <Icon name={icon} class="size-10" />
       </a>
     ))
   }
