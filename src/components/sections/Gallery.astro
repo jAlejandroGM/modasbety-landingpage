@@ -8,15 +8,15 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
 
 <section
   id="galeria"
-  class="flex flex-col items-center gap-8 lg:gap-12 max-w-[1800px] mx-auto px-4 sm:px-6 py-16"
+  class="flex flex-col items-center gap-8 lg:gap-12 max-w-[1800px] mx-auto px-4 sm:px-6"
   aria-labelledby="galeria-titulo"
 >
   <div class="space-y-2">
-    <h2 id="galeria-titulo">Colección Exclusiva</h2>
+    <h2 id="galeria-titulo">Diseños Exclusivos</h2>
     <p
       class="text-center text-sm md:text-base lg:text-xl text-balance text-gray-300 max-w-xl m-auto italic"
     >
-      Algunos nuestros últimos diseños
+      Algunos nuestros últimos diseños personalizados
     </p>
   </div>
 
@@ -67,7 +67,7 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   <a
     href={SOCIAL_LINKS.whatsapp(MESSAGES.whatsappCta)}
     target="_blank"
-    class="wsp-btn flex items-center gap-2 text-sm md:text-base lg:text-lg mt-4"
+    class="wsp-btn flex items-center gap-2 text-sm md:text-base lg:text-lg"
     rel="noopener noreferrer"
     aria-label="Solicitar información detallada por WhatsApp"
   >

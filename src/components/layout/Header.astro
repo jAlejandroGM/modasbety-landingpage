@@ -14,6 +14,13 @@
           aria-label="Ir a la sección de especialidades">Especialidades</a
         >
       </li>
+      <li>
+        <a
+          class="nav-anchor"
+          href="#galeria"
+          aria-label="Ir a la sección de galería">Nuestros Trabajos</a
+        >
+      </li>
       <!-- <li>
         <a
           class="nav-anchor"
@@ -32,34 +39,19 @@
   </nav>
 </header>
 
-<script type="module">
-  document.addEventListener("DOMContentLoaded", () => {
-    const anchors = document.querySelectorAll('.nav-anchor[href^="#"]');
-    anchors.forEach((a) => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href");
-        if (!href || href === "#") return;
-        const target = document.querySelector(href);
-        if (!target) return;
-
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "nearest",
-        });
-
-        history.replaceState(
-          null,
-          "",
-          window.location.pathname + window.location.search
-        );
-
-        const hadTabindex = target.hasAttribute("tabindex");
-        if (!hadTabindex) target.setAttribute("tabindex", "-1");
-        target.focus({ preventScroll: true });
-        if (!hadTabindex) target.removeAttribute("tabindex");
-      });
+<script>
+  document.querySelectorAll(".nav-anchor").forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute("href");
+      if (targetId && targetId.startsWith("#")) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }
     });
   });
 </script>
