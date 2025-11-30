@@ -81,21 +81,29 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
     btnLess.addEventListener("click", () => {
       const gallerySection = document.getElementById("galeria");
 
-      // 1. Calculamos la posición y hacemos scroll manual
-      // Usamos window.scrollTo que es más robusto que scrollIntoView para este caso
       if (gallerySection) {
-        const y = gallerySection.getBoundingClientRect().top + window.scrollY;
-        // Restamos 100px para dejar un margen superior (útil si tienes header fijo)
-        window.scrollTo({ top: y - 100, behavior: "instant" });
-      }
+        // 1. Calculamos a dónde queremos ir ANTES de cambiar nada
+        const y =
+          gallerySection.getBoundingClientRect().top + window.scrollY - 100;
 
-      // 2. IMPORTANTE: Usamos setTimeout para dar tiempo al navegador a procesar el scroll
-      // ANTES de quitar el contenido. Esto evita el "salto" y el espacio en blanco.
-      setTimeout(() => {
+        // 2. "Congelamos" el comportamiento suave del navegador
+        // Esto es la clave: evita que el navegador intente animar el "regreso"
+        document.documentElement.style.scrollBehavior = "auto";
+
+        // 3. Colapsamos la grilla (la página se encoge instantáneamente)
         grid.classList.remove("is-expanded");
         btnMore.classList.remove("hidden");
         btnLess.classList.add("hidden");
-      }, 50); // 50ms es suficiente para que el motor de renderizado se actualice
+
+        // 4. Forzamos el salto inmediato a la posición correcta
+        window.scrollTo({ top: y, behavior: "auto" });
+
+        // 5. Devolvemos la suavidad al scroll después de un instante
+        // para que el resto de la página siga funcionando bonito
+        setTimeout(() => {
+          document.documentElement.style.scrollBehavior = "";
+        }, 50);
+      }
     });
   }
 </script>
