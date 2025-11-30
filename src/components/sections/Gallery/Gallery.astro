@@ -72,39 +72,23 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   const gallerySection = document.getElementById("galeria");
 
   if (grid && btnMore && btnLess && gallerySection) {
-    // --- VER MÁS (Suave) ---
+    // --- VER MÁS (Suave por CSS) ---
     btnMore.addEventListener("click", () => {
       grid.classList.add("is-expanded");
       btnMore.classList.add("hidden");
       btnLess.classList.remove("hidden");
     });
 
-    // --- VER MENOS (Tosco pero seguro) ---
+    // --- VER MENOS (Tosco/Instantáneo) ---
     btnLess.addEventListener("click", () => {
-      // 1. Desactivar scroll suave globalmente para evitar "rebotes"
-      document.documentElement.style.scrollBehavior = "auto";
-      document.documentElement.classList.remove("scroll-smooth");
+      // 1. Scroll instantáneo al inicio de la galería
+      // Esto asegura que el usuario esté en zona segura antes de quitar las fotos
+      gallerySection.scrollIntoView({ behavior: "instant", block: "start" });
 
-      // 2. Calcular posición segura (inicio de la galería)
-      const targetPosition =
-        window.scrollY + gallerySection.getBoundingClientRect().top - 100;
-
-      // 3. Mover scroll INMEDIATAMENTE antes de colapsar
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "auto",
-      });
-
-      // 4. Colapsar contenido
+      // 2. Colapsar la grilla inmediatamente
       grid.classList.remove("is-expanded");
       btnMore.classList.remove("hidden");
       btnLess.classList.add("hidden");
-
-      // 5. Restaurar scroll suave
-      setTimeout(() => {
-        document.documentElement.style.scrollBehavior = "";
-        document.documentElement.classList.add("scroll-smooth");
-      }, 100);
     });
   }
 </script>
