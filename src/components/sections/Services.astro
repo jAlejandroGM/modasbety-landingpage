@@ -1,45 +1,54 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
+
+import weddingDress from "../../assets/drawings/weddingdress-drawing.png";
+import partyDress from "../../assets/drawings/partydress-drawing.png";
+import nightDress from "../../assets/drawings/nightdress-drawing.png";
+import quinceaneraDress from "../../assets/drawings/quinceañeradress-drawing.png";
+import graduationDress from "../../assets/drawings/graduationdress-drawing.png";
+import womanSuit from "../../assets/drawings/womansuit-drawing.png";
+import casualClothing from "../../assets/drawings/casualclothing-drawing.png";
 
 const servicios = [
   {
-    icon: "👰",
+    image: weddingDress,
     titulo: "Vestidos de Novia",
     descripcion:
       "Diseños únicos para el día más especial. Hacemos realidad el vestido de tus sueños.",
   },
   {
-    icon: "🌟",
+    image: partyDress,
     titulo: "Vestidos de Fiesta",
     descripcion:
       "Elegancia y sofisticación para eventos especiales. Cada vestido refleja tu personalidad única.",
   },
   {
-    icon: "🌙",
+    image: nightDress,
     titulo: "Vestidos de Noche",
     descripcion:
       "Glamour y distinción para veladas especiales. Diseños que destacan tu belleza natural.",
   },
   {
-    icon: "👑",
+    image: quinceaneraDress,
     titulo: "Vestidos de Quinceañera",
     descripcion:
       "Hacemos realidad el vestido de tus sueños para una noche de quince años inolvidable.",
   },
   {
-    icon: "🎓",
+    image: graduationDress,
     titulo: "Vestidos de Promoción",
     descripcion: "Haz de tu graduación una noche única con elegancia y estilo.",
   },
   {
-    icon: "👔",
+    image: womanSuit,
     titulo: "Sastrería para Damas",
     descripcion:
       "Trajes ejecutivos y formales. Confección a medida para la mujer profesional moderna.",
   },
   {
-    icon: "👗",
+    image: casualClothing,
     titulo: "Ropa Casual Premium",
     descripcion:
       "Blusas, pantalones y prendas del día a día con acabados de alta costura.",
@@ -68,10 +77,14 @@ const servicios = [
     <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72  h-auto p-6 md:py-8  mr-4 md:mr-8 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
-            <span class="text-3xl md:text-4xl lg:text-5xl">
-              {servicio.icon}
-            </span>
+          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72  h-auto p-6 md:py-8  mr-4 md:mr-8 border border-white/20 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)">
+            <Image
+              src={servicio.image}
+              alt={`Boceto de ${servicio.titulo}`}
+              width="300"
+              densities={[1.5, 2]}
+              class="mx-auto w-1/2 lg:w-8/10 h-auto mix-blend-lighten"
+            />
             <h3 class="font-text text-base md:text-lg lg:text-xl font-bold">
               {servicio.titulo}
             </h3>

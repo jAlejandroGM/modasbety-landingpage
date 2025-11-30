@@ -15,18 +15,6 @@
   }
 }
 
-@layer components {
-  .surface-panel {
-    background: linear-gradient(
-      135deg,
-      rgba(26, 26, 26, 0.8) 0%,
-      rgba(42, 42, 42, 0.6) 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-}
-
 h2 {
   @apply text-center text-2xl md:text-3xl lg:text-4xl font-bold font-subs text-white  lg:leading-14;
 }
