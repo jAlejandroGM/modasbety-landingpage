@@ -77,13 +77,13 @@ const servicios = [
     <div id="servicios-grid" class="flex">
       {
         servicios.map((servicio) => (
-          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72  h-auto p-6 md:py-8  mr-4 md:mr-8 border border-white/20 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)">
+          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72 h-auto p-6 md:py-8 mr-4 md:mr-8 border border-white/20 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
             <Image
               src={servicio.image}
               alt={`Boceto de ${servicio.titulo}`}
               width="300"
               densities={[1.5, 2]}
-              class="mx-auto w-1/2 lg:w-8/10 h-auto mix-blend-lighten"
+              class="mx-auto w-1/2 lg:w-4/5 h-auto mix-blend-lighten"
             />
             <h3 class="font-text text-base md:text-lg lg:text-xl font-bold">
               {servicio.titulo}
