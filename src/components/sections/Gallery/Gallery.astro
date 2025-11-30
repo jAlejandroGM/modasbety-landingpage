@@ -66,44 +66,43 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
 <Lightbox />
 
 <script>
-  // --- VER MÁS / VER MENOS ---
   const grid = document.getElementById("gallery-grid");
   const btnMore = document.getElementById("btn-more");
   const btnLess = document.getElementById("btn-less");
+  const gallerySection = document.getElementById("galeria");
 
-  if (grid && btnMore && btnLess) {
+  if (grid && btnMore && btnLess && gallerySection) {
+    // --- VER MÁS (Suave) ---
     btnMore.addEventListener("click", () => {
       grid.classList.add("is-expanded");
       btnMore.classList.add("hidden");
       btnLess.classList.remove("hidden");
     });
 
+    // --- VER MENOS (Tosco pero seguro) ---
     btnLess.addEventListener("click", () => {
-      const gallerySection = document.getElementById("galeria");
+      // 1. CALCULAR: ¿Dónde está el inicio de la galería en toda la página?
+      // window.scrollY + getBoundingClientRect().top nos da la posición absoluta exacta.
+      // Restamos 100px para dejar espacio al Header si es sticky.
+      const targetPosition =
+        window.scrollY + gallerySection.getBoundingClientRect().top - 100;
 
-      if (gallerySection) {
-        // 1. Calculamos a dónde queremos ir ANTES de cambiar nada
-        const y =
-          gallerySection.getBoundingClientRect().top + window.scrollY - 100;
+      // 2. TELETRANSPORTAR: Movemos al usuario arriba INMEDIATAMENTE.
+      // Usamos 'instant' para evitar cualquier animación de scroll.
+      // Al hacer esto PRIMERO, el usuario pasa a ver el título de la galería.
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "instant",
+      });
 
-        // 2. "Congelamos" el comportamiento suave del navegador
-        // Esto es la clave: evita que el navegador intente animar el "regreso"
-        document.documentElement.style.scrollBehavior = "auto";
+      // 3. OCULTAR: Ahora que el usuario ya está arriba y no ve el fondo,
+      // quitamos las fotos. La página se encoge, pero como el usuario está
+      // mirando la parte de arriba, no ve el espacio blanco ni el "rebote".
+      grid.classList.remove("is-expanded");
 
-        // 3. Colapsamos la grilla (la página se encoge instantáneamente)
-        grid.classList.remove("is-expanded");
-        btnMore.classList.remove("hidden");
-        btnLess.classList.add("hidden");
-
-        // 4. Forzamos el salto inmediato a la posición correcta
-        window.scrollTo({ top: y, behavior: "auto" });
-
-        // 5. Devolvemos la suavidad al scroll después de un instante
-        // para que el resto de la página siga funcionando bonito
-        setTimeout(() => {
-          document.documentElement.style.scrollBehavior = "";
-        }, 50);
-      }
+      // 4. INTERCAMBIAR BOTONES
+      btnMore.classList.remove("hidden");
+      btnLess.classList.add("hidden");
     });
   }
 </script>
@@ -112,7 +111,6 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   /* --- 1. DEFINICIÓN DE VISIBILIDAD INICIAL (Sin Expanded) --- */
 
   /* Mobile: Ocultar items del 9 en adelante */
-  /* Usamos :global() porque .gallery-item ahora vive en un componente hijo */
   #gallery-grid:not(.is-expanded) :global(.gallery-item:nth-child(n + 9)) {
     display: none;
   }
@@ -148,7 +146,7 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   @keyframes revealItem {
     from {
       opacity: 0;
-      transform: translateY(30px); /* Vienen desde abajo */
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -157,14 +155,10 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   }
 
   /* Aplicamos animación SOLO a los items nuevos que aparecen al expandir */
-
-  /* En Mobile: Animamos del 9 en adelante */
   #gallery-grid.is-expanded :global(.gallery-item:nth-child(n + 9)) {
     animation: revealItem 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  /* En Tablet: Los items 9-12 YA estaban visibles, así que quitamos su animación */
-  /* Solo animamos del 13 en adelante */
   @media (min-width: 768px) {
     #gallery-grid.is-expanded :global(.gallery-item:nth-child(-n + 12)) {
       animation: none;
