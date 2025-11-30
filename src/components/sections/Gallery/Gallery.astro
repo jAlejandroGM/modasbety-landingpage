@@ -72,23 +72,17 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
   const gallerySection = document.getElementById("galeria");
 
   if (grid && btnMore && btnLess && gallerySection) {
-    // --- VER MÁS (Suave por CSS) ---
     btnMore.addEventListener("click", () => {
       grid.classList.add("is-expanded");
       btnMore.classList.add("hidden");
       btnLess.classList.remove("hidden");
     });
 
-    // --- VER MENOS (Tosco/Instantáneo) ---
     btnLess.addEventListener("click", () => {
-      // 1. Scroll instantáneo al inicio de la galería
-      // Esto asegura que el usuario esté en zona segura antes de quitar las fotos
-      gallerySection.scrollIntoView({ behavior: "instant", block: "start" });
-
-      // 2. Colapsar la grilla inmediatamente
       grid.classList.remove("is-expanded");
       btnMore.classList.remove("hidden");
       btnLess.classList.add("hidden");
+      gallerySection.scrollIntoView({ behavior: "smooth" });
     });
   }
 </script>

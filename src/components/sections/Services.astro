@@ -167,8 +167,14 @@ const servicios = [
   }
 
   #servicios-grid {
-    animation: scroll 40s linear infinite;
+    animation: scroll 20s linear infinite;
     width: max-content;
+  }
+
+  @media (min-width: 768px) {
+    #servicios-grid {
+      animation-duration: 40s;
+    }
   }
 
   @keyframes scroll {
