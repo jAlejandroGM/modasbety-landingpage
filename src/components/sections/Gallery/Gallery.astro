@@ -81,28 +81,30 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
 
     // --- VER MENOS (Tosco pero seguro) ---
     btnLess.addEventListener("click", () => {
-      // 1. CALCULAR: ¿Dónde está el inicio de la galería en toda la página?
-      // window.scrollY + getBoundingClientRect().top nos da la posición absoluta exacta.
-      // Restamos 100px para dejar espacio al Header si es sticky.
+      // 1. Desactivar scroll suave globalmente para evitar "rebotes"
+      document.documentElement.style.scrollBehavior = "auto";
+      document.documentElement.classList.remove("scroll-smooth");
+
+      // 2. Calcular posición segura (inicio de la galería)
       const targetPosition =
         window.scrollY + gallerySection.getBoundingClientRect().top - 100;
 
-      // 2. TELETRANSPORTAR: Movemos al usuario arriba INMEDIATAMENTE.
-      // Usamos 'instant' para evitar cualquier animación de scroll.
-      // Al hacer esto PRIMERO, el usuario pasa a ver el título de la galería.
+      // 3. Mover scroll INMEDIATAMENTE antes de colapsar
       window.scrollTo({
         top: targetPosition,
-        behavior: "instant",
+        behavior: "auto",
       });
 
-      // 3. OCULTAR: Ahora que el usuario ya está arriba y no ve el fondo,
-      // quitamos las fotos. La página se encoge, pero como el usuario está
-      // mirando la parte de arriba, no ve el espacio blanco ni el "rebote".
+      // 4. Colapsar contenido
       grid.classList.remove("is-expanded");
-
-      // 4. INTERCAMBIAR BOTONES
       btnMore.classList.remove("hidden");
       btnLess.classList.add("hidden");
+
+      // 5. Restaurar scroll suave
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = "";
+        document.documentElement.classList.add("scroll-smooth");
+      }, 100);
     });
   }
 </script>
