@@ -38,7 +38,7 @@ export const CONTACT_INFO = {
 };
 
 export const SOCIAL_LINKS = {
-  facebook: "https://www.facebook.com/ModasBetyConfecciones",
+  facebook: "https://www.facebook.com/ModasBetyAtelier/",
   instagram: "https://www.instagram.com/modasbety_",
   whatsapp: (message = "") =>
     `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
@@ -49,6 +49,4 @@ export const SOCIAL_LINKS = {
 export const MESSAGES = {
   whatsappDefault:
     "¡Hola! Vengo de su página web y me gustaría recibir información sobre sus servicios de confección a medida",
-  whatsappCta:
-    "¡Hola! Me interesa conocer más sobre sus servicios de confección. ¿Podrían proporcionarme información detallada?",
 };
