@@ -4,6 +4,7 @@ _A modern, responsive Landing Page for a haute couture atelier in Trujillo, Peru
 
 ![Astro](https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Live-success?style=flat-square)
 ![License](https://img.shields.io/badge/License-Private-red?style=flat-square)
@@ -35,7 +36,8 @@ _A modern, responsive Landing Page for a haute couture atelier in Trujillo, Peru
 
 - **Astro 5** — Static site generator (SSG) for zero-JavaScript default frontend architecture.
 - **Tailwind CSS 4** — Utility-first CSS framework using the new Vite integration.
-- **TypeScript** — Used for data modeling (`siteData.ts`) and component logic to ensure type safety.
+- **JavaScript (ES6+)** — Vanilla JS used for client-side interactivity, DOM manipulation, and Canvas logic.
+- **TypeScript** — Used for data modeling (`siteData.ts`) and component props to ensure type safety during build time.
 - **Astro Icon** — Optimized SVG icon system.
 - **Canvas API** — Native HTML5 Canvas for high-performance background animations.
 - **Vercel** — CI/CD pipeline and edge network deployment.
