@@ -23,7 +23,7 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
 
   <div
     id="gallery-grid"
-    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 w-full"
+    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 w-3/5"
   >
     {
       images.map((img, index) => (
@@ -32,7 +32,7 @@ const images = await Astro.glob("/src/assets/vestidos/*.{jpeg,jpg,png}");
     }
   </div>
 
-  <div id="gallery-controls" class="w-full flex justify-center -mt-4 lg:hidden">
+  <div id="gallery-controls" class="w-full flex justify-center -mt-4">
     <button
       id="btn-more"
       class="text-sm tracking-widest text-sakura-primary hover:text-sakura-hover border-b border-transparent hover:border-sakura-primary transition-all"
