@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { SOCIAL_LINKS, MESSAGES } from "../../data/siteData";
+import "swiper/css";
 
 import weddingDress from "../../assets/drawings/weddingdress-drawing.png";
 import partyDress from "../../assets/drawings/partydress-drawing.png";
@@ -54,6 +55,8 @@ const servicios = [
       "Blusas, pantalones y prendas del día a día con acabados de alta costura.",
   },
 ];
+
+const serviciosInfinitos = Array(10).fill(servicios).flat();
 ---
 
 <section
@@ -73,17 +76,17 @@ const servicios = [
     </p>
   </div>
 
-  <div class="slider overflow-hidden w-full h-auto py-8 m-auto relative">
-    <div id="servicios-grid" class="flex">
+  <div class="swiper w-full h-auto! py-8! relative">
+    <div class="swiper-wrapper">
       {
-        servicios.map((servicio) => (
-          <article class="service-card surface-panel flex flex-col items-center text-center gap-3 lg:gap-4 flex-none w-64 md:w-72 h-auto p-6 md:py-8 mr-4 md:mr-8 border border-white/20 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
+        serviciosInfinitos.map((servicio, index) => (
+          <article class="swiper-slide flex flex-col flex-none w-64! md:w-72! h-auto! items-center text-center gap-3 lg:gap-4 p-6 md:py-8 border border-white/20 rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-none hover:border-sakura-primary/30 hover:shadow-[0_0_35px_rgba(255,192,203,0.2)]">
             <Image
               src={servicio.image}
               alt={`Boceto de ${servicio.titulo}`}
               width="300"
               densities={[1.5, 2]}
-              class="mx-auto w-1/2 lg:w-4/5 h-auto mix-blend-lighten"
+              class="mx-auto w-1/2 lg:w-5/8 xl:w-4/5 h-auto"
             />
             <h3 class="font-text text-base md:text-lg lg:text-xl font-bold">
               {servicio.titulo}
@@ -123,29 +126,44 @@ const servicios = [
 </section>
 
 <script>
-  const grid = document.getElementById("servicios-grid");
+  import Swiper from "swiper";
+  import { Autoplay, FreeMode } from "swiper/modules";
 
-  if (grid) {
-    const cards = grid.querySelectorAll(".service-card");
-
-    cards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      (clone as HTMLElement).setAttribute("aria-hidden", "true");
-      grid.appendChild(clone);
-    });
-  }
+  new Swiper(".swiper", {
+    modules: [Autoplay, FreeMode],
+    loop: true,
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    speed: 4000,
+    grabCursor: true,
+    freeMode: {
+      enabled: true,
+      momentum: false,
+      sticky: false,
+    },
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 32,
+      },
+    },
+  });
 </script>
 
 <style>
-  .slider::before,
-  .slider::after {
+  .swiper::before,
+  .swiper::after {
     position: absolute;
     top: 2rem;
     width: 150px;
     height: calc(100% - 4rem);
     pointer-events: none;
     content: "";
-    z-index: 1;
+    z-index: 10;
     mask-image: linear-gradient(
       to bottom,
       transparent 0%,
@@ -155,7 +173,7 @@ const servicios = [
     );
   }
 
-  .slider::before {
+  .swiper::before {
     left: 0;
     background: linear-gradient(
       to left,
@@ -165,7 +183,7 @@ const servicios = [
     );
   }
 
-  .slider::after {
+  .swiper::after {
     right: 0;
     background: linear-gradient(
       to right,
@@ -175,27 +193,7 @@ const servicios = [
     );
   }
 
-  #servicios-grid:hover {
-    animation-play-state: paused;
-  }
-
-  #servicios-grid {
-    animation: scroll 20s linear infinite;
-    width: max-content;
-  }
-
-  @media (min-width: 768px) {
-    #servicios-grid {
-      animation-duration: 40s;
-    }
-  }
-
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+  .swiper :global(.swiper-wrapper) {
+    transition-timing-function: linear;
   }
 </style>
