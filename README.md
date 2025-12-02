@@ -21,11 +21,13 @@ _A modern, responsive Landing Page for a haute couture atelier in Trujillo, Peru
 
 - **Mobile-First Design** — Responsive layout prioritized for mobile devices, ensuring seamless adaptation to tablets and desktops.
 - **Custom UX/UI** — Fully bespoke interface design reflecting the brand's haute couture identity, moving away from generic templates.
-- **Performance-First Architecture** — Implements "Facade Pattern" for Google Maps to prevent iframe blocking, and optimized image loading strategies.
-- **Interactive Gallery** — Custom masonry-style grid with "Load More" functionality and a native Dialog-based Lightbox.
+- **Performance-First Architecture** — Implements "Facade Pattern" for Google Maps to prevent iframe blocking, and optimized image loading strategies (`createImageBitmap` for canvas).
+- **Interactive Gallery** —
+  - Responsive Grid with "Load More" functionality to manage DOM size.
+  - Native `<dialog>` Lightbox with **touch swipe gestures** and keyboard navigation support.
 - **Custom Animations** —
-  - Canvas API implementation for falling Sakura petals (optimized with `requestAnimationFrame`).
-  - CSS infinite scroll for services slider.
+  - Canvas API implementation for falling Sakura petals (optimized with `requestAnimationFrame` and `ResizeObserver`).
+  - Infinite carousel powered by **Swiper.js** with hardware acceleration and touch support.
 - **SEO Optimized** — Full JSON-LD Structured Data for LocalBusiness, Open Graph tags, and semantic HTML5.
 - **Accessibility (a11y)** — WCAG 2.1 compliant, including `prefers-reduced-motion` support for animations.
 - **Business Integrations** — WhatsApp API integration for direct quotes and dynamic copy-to-clipboard functionality.
@@ -38,6 +40,7 @@ _A modern, responsive Landing Page for a haute couture atelier in Trujillo, Peru
 - **Tailwind CSS 4** — Utility-first CSS framework using the new Vite integration.
 - **JavaScript (ES6+)** — Vanilla JS used for client-side interactivity, DOM manipulation, and Canvas logic.
 - **TypeScript** — Used for data modeling (`siteData.ts`) and component props to ensure type safety during build time.
+- **Swiper.js** — Modern touch slider for the services carousel.
 - **Astro Icon** — Optimized SVG icon system.
 - **Canvas API** — Native HTML5 Canvas for high-performance background animations.
 - **Vercel** — CI/CD pipeline and edge network deployment.
@@ -121,7 +124,7 @@ Redistribution, modification, or commercial use is not permitted without prior a
 
 ## Author
 
-Developed with ☕ by **Alejandro Guzmán** [@alguzdev](https://alguzdev.vercel.app/)
+Designed and developed with ☕ by **Alejandro Guzmán** [@alguzdev](https://alguzdev.vercel.app/)
 
 ---
 
