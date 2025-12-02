@@ -4,18 +4,40 @@ import { Icon } from "astro-icon/components";
 
 <dialog
   id="lightbox"
-  class="backdrop:bg-black/90 bg-transparent p-0 m-auto max-w-[95vw] max-h-[95vh] rounded-none outline-none overflow-hidden shadow-2xl"
+  class="backdrop:bg-black/90 bg-transparent p-0 m-auto max-w-screen max-h-screen w-full h-full rounded-none outline-none overflow-hidden shadow-2xl"
 >
-  <div class="relative w-full h-full flex items-center justify-center">
+  <div class="relative w-full h-full flex items-center justify-center group">
+    <!-- Botón Anterior -->
+    <button
+      id="prev-btn"
+      class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-sakura-primary cursor-pointer bg-black/20 hover:bg-black/50 rounded-full p-2 transition-all z-50 focus:outline-none hidden md:flex items-center justify-center"
+      aria-label="Imagen anterior"
+    >
+      <Icon name="mdi:chevron-left" class="w-10 h-10 md:w-12 md:h-12" />
+    </button>
+
+    <!-- Imagen Principal -->
     <img
       id="lightbox-img"
       src=""
       alt="Vista ampliada"
-      class="max-w-full max-h-[90vh] object-contain"
+      class="max-w-[95vw] max-h-[90vh] object-contain select-none transition-opacity duration-300"
+      draggable="false"
     />
+
+    <!-- Botón Siguiente -->
+    <button
+      id="next-btn"
+      class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-sakura-primary cursor-pointer bg-black/20 hover:bg-black/50 rounded-full p-2 transition-all z-50 focus:outline-none hidden md:flex items-center justify-center"
+      aria-label="Siguiente imagen"
+    >
+      <Icon name="mdi:chevron-right" class="w-10 h-10 md:w-12 md:h-12" />
+    </button>
+
+    <!-- Botón Cerrar -->
     <button
       id="close-lightbox"
-      class="absolute -top-2 -right-2 md:top-0 md:right-0 text-sakura-primary hover:text-sakura-hover p-4 transition-colors z-50 focus:outline-none hover:cursor-pointer"
+      class="absolute top-4 right-4 text-white/70 hover:text-sakura-primary p-2 transition-colors z-50 focus:outline-none cursor-pointer bg-black/20 hover:bg-black/50 rounded-full"
       aria-label="Cerrar"
     >
       <Icon name="mdi:close" class="w-8 h-8 drop-shadow-md" />
@@ -29,26 +51,64 @@ import { Icon } from "astro-icon/components";
     "lightbox-img"
   ) as HTMLImageElement;
   const closeBtn = document.getElementById("close-lightbox");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
 
-  // Usamos delegación de eventos o buscamos los triggers globalmente
-  // Nota: Al mover esto, asegúrate de que el script se ejecute en el cliente
-  const triggers = document.querySelectorAll(".lightbox-trigger");
+  // Obtenemos todos los triggers y mantenemos el índice actual
+  let triggers = Array.from(document.querySelectorAll(".lightbox-trigger"));
+  let currentIndex = 0;
+
+  const showImage = (index: number) => {
+    // Lógica circular
+    if (index < 0) index = triggers.length - 1;
+    if (index >= triggers.length) index = 0;
+
+    currentIndex = index;
+    const trigger = triggers[currentIndex];
+    const highResSrc = trigger.getAttribute("data-src");
+
+    if (highResSrc && lightboxImg) {
+      // Pequeña animación de opacidad para suavizar el cambio
+      lightboxImg.style.opacity = "0.5";
+      setTimeout(() => {
+        lightboxImg.src = highResSrc;
+        lightboxImg.style.opacity = "1";
+      }, 150);
+    }
+  };
+
+  const nextImage = (e?: Event) => {
+    e?.stopPropagation();
+    showImage(currentIndex + 1);
+  };
+
+  const prevImage = (e?: Event) => {
+    e?.stopPropagation();
+    showImage(currentIndex - 1);
+  };
 
   if (lightbox && lightboxImg) {
-    triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
+    // 1. Event Listeners para abrir el lightbox
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        // Cargamos la imagen directamente sin animación al abrir
         const highResSrc = trigger.getAttribute("data-src");
-        if (highResSrc) {
-          lightboxImg.src = highResSrc;
-          lightbox.showModal();
-          document.body.style.overflow = "hidden";
-        }
+        if (highResSrc) lightboxImg.src = highResSrc;
+
+        lightbox.showModal();
+        document.body.style.overflow = "hidden";
       });
     });
 
+    // 2. Cerrar Lightbox
     const closeStart = () => {
       lightbox.close();
-      lightboxImg.src = "";
+      // Limpiamos src después de cerrar para evitar parpadeos al reabrir
+      setTimeout(() => {
+        lightboxImg.src = "";
+      }, 300);
       document.body.style.overflow = "";
     };
 
@@ -56,6 +116,51 @@ import { Icon } from "astro-icon/components";
     lightbox.addEventListener("click", (event) => {
       if (event.target === lightbox) closeStart();
     });
+
+    // 3. Navegación con Botones
+    nextBtn?.addEventListener("click", nextImage);
+    prevBtn?.addEventListener("click", prevImage);
+
+    // 4. Navegación con Teclado
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.open) return;
+
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "Escape") closeStart();
+    });
+
+    // 5. Soporte SWIPE (Táctil)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // Mínima distancia para considerar swipe
+
+    lightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
+
+    lightbox.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const distance = touchEndX - touchStartX;
+
+        if (Math.abs(distance) > minSwipeDistance) {
+          if (distance < 0) {
+            // Deslizar a la izquierda -> Siguiente
+            nextImage();
+          } else {
+            // Deslizar a la derecha -> Anterior
+            prevImage();
+          }
+        }
+      },
+      { passive: true }
+    );
   }
 </script>
 
@@ -71,7 +176,7 @@ import { Icon } from "astro-icon/components";
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.98);
     }
     to {
       opacity: 1;
